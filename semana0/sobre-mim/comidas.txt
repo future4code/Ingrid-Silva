@@ -1,0 +1,11 @@
+
+1 - Arroz e feijão
+2 - Batata
+3 - Pepino
+4 - Bergamota
+5 - Melancia
+6 - Salada verde com castanhas
+7 - Massa com sardinha
+8 - Hambúrguer
+9 - Pizza
+10 - Lasanha
