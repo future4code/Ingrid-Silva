@@ -1,4 +1,10 @@
-// EXERCÍO 1
+// EXERCÍCIO 1: primeiramente será impresso o valor de b (10). Já no segundo console.log será impresso o valor de a e b, sendo (10, 5) 
+// EXERCÍCIO 2: Os valores impressos serão: 10, 10, 10  
+// EXERCÍCIO 3: "let p" poderia ser renomeada para: horasTrabalhadasNoDia e "let t" poderia ser renomeada para valorRecebidoPorDia
+
+// --------------------------------------------------------------------------------
+
+// EXERCÍCIO 1
 
 let name;
 let age;
