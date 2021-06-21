@@ -107,14 +107,12 @@ function checaRenovacaoRG() {
     prompt("Digite o ano em que sua carteira foi emitida")
   );
 
-  const idadeDoUsuário = anoAtual - anoDeNascimento;
+  const idadeDoUsuario = anoAtual - anoDeNascimento;
   const ultimaRenovacao = anoAtual - anoCarteira;
 
-  console.log(idadeDoUsuário, ultimaRenovacao);
-
-  if (idadeDoUsuário <= 20) {
+  if (idadeDoUsuario <= 20) {
     console.log(ultimaRenovacao >= 5); // 5 em 5 anos
-  } else if (idadeDoUsuário > 20 && idadeDoUsuário <= 50) {
+  } else if (idadeDoUsuario > 20 && idadeDoUsuario <= 50) {
     console.log(ultimaRenovacao >= 10); // 10 em 10 anos
   } else {
     console.log(ultimaRenovacao >= 15); // 15 em 15 anos
