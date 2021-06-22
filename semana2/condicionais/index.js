@@ -41,7 +41,7 @@ const verificaIdade = () => {
   }
 };
 
-verificaIdade();
+// verificaIdade();
 
 // Exercício 2
 
@@ -59,7 +59,7 @@ const verificaTurno = () => {
   }
 };
 
-verificaTurno();
+// verificaTurno();
 
 // Exercício 3
 
@@ -83,7 +83,7 @@ const verificaTurnoSwitch = () => {
   }
 };
 
-verificaTurnoSwitch();
+// verificaTurnoSwitch();
 
 // Exercício 4
 
@@ -100,7 +100,7 @@ const verificaFilmeEPreco = () => {
   }
 };
 
-verificaFilmeEPreco();
+// verificaFilmeEPreco();
 
 // Desafio 1
 
@@ -118,52 +118,98 @@ const verificaFilmeEPrecoElanche = () => {
   }
 };
 
-verificaFilmeEPrecoElanche();
+// verificaFilmeEPrecoElanche();
 
 // Desafio 2
 
-const cotacaoDolar = 4.1;
+// const cotacaoDolar = 4.1;
 
-const formataValor = (valor, tipo) => {
-  const moeda = tipo === "in" ? "U$" : "R$";
-  const total = tipo === "in" ? valor / cotacaoDolar : valor;
+// const formataValor = (valor, tipo) => {
+//   const moeda = tipo === "in" ? "U$" : "R$";
+//   const total = tipo === "in" ? valor / cotacaoDolar : valor;
 
-  return `${moeda} ${total}`;
-};
+//   return `${moeda} ${total}`;
+// };
 
-const valoresEtapaSF = {
-  1: 1320,
-  2: 880,
-  3: 550,
-  4: 220,
-};
+// const valoresEtapaSF = {
+//   1: 1320,
+//   2: 880,
+//   3: 550,
+//   4: 220,
+// };
 
-const valoresEtapaDT = {
-  1: 660,
-  2: 440,
-  3: 330,
-  4: 170,
-};
+// const valoresEtapaDT = {
+//   1: 660,
+//   2: 440,
+//   3: 330,
+//   4: 170,
+// };
 
-const valoresEtapaFI = {
-  1: 1980,
-  2: 1320,
-  3: 880,
-  4: 330,
-};
+// const valoresEtapaFI = {
+//   1: 1980,
+//   2: 1320,
+//   3: 880,
+//   4: 330,
+// };
 
-const tipos = {
-  in: "Internacional",
-  do: "Doméstico",
-};
+// const tipos = {
+//   in: "Internacional",
+//   do: "Doméstico",
+// };
 
-const etapas = {
-  sf: "Semifinal",
-  fi: "Final",
-  dt: "Decisão de terceiro lugar",
-};
+// const etapas = {
+//   sf: "Semifinal",
+//   fi: "Final",
+//   dt: "Decisão de terceiro lugar",
+// };
 
-const vendaIngressos = () => {
+// const vendaIngressos = () => {
+//   const nomeCompleto = prompt("Digite o seu nome completo");
+//   const tipoJogo = prompt(
+//     "Qual o tipo de jogo que você vai assistir? Digite IN = Internacional ou DO = Doméstico"
+//   ).toLowerCase();
+//   const etapaJogo = prompt(
+//     "Digite qual é a etapa do jogo que você vai assistir. Digite SF = semifinal ou DT = decisão de terceiro lugar ou FI = final"
+//   ).toLowerCase();
+//   const categoria = Number(prompt("Digite a categoria: (1, 2, 3 ou 4)"));
+//   const quantidadeIngressos = Number(
+//     prompt("Digite a quantidade de ingressos:")
+//   );
+
+//   let valorIngresso = 0;
+
+//   switch (etapaJogo) {
+//     case "sf": {
+//       valorIngresso = valoresEtapaSF[categoria];
+//       break;
+//     }
+//     case "dt": {
+//       valorIngresso = valoresEtapaDT[categoria];
+//       break;
+//     }
+//     case "fi": {
+//       valorIngresso = valoresEtapaFI[categoria];
+//       break;
+//     }
+//   }
+
+//   console.log(`---Dados da compra---
+//   Nome do cliente:  ${nomeCompleto}
+//   Tipo do jogo:   ${tipos[tipoJogo]}
+//   Etapa do jogo:   ${etapas[etapaJogo]}
+//   Categoria:   ${categoria}
+//   Quantidade de Ingressos:   ${quantidadeIngressos} ingressos
+//   ---Valores---
+//   Valor do ingresso:  ${formataValor(valorIngresso, tipoJogo)}
+//   Valor total:   ${formataValor(
+//     quantidadeIngressos * valorIngresso,
+//     tipoJogo
+//   )}`);
+// };
+
+// // vendaIngressos();
+
+function vendaDeIngressos() {
   const nomeCompleto = prompt("Digite o seu nome completo");
   const tipoJogo = prompt(
     "Qual o tipo de jogo que você vai assistir? Digite IN = Internacional ou DO = Doméstico"
@@ -176,35 +222,58 @@ const vendaIngressos = () => {
     prompt("Digite a quantidade de ingressos:")
   );
 
-  let valorIngresso = 0;
+  const valoresEtapaSF = [1320, 880, 550, 220];
+  const valoresEtapaDT = [660, 440, 330, 170];
+  const valoresEtapaFI = [1980, 1320, 880, 330];
 
-  switch (etapaJogo) {
-    case "sf": {
-      valorIngresso = valoresEtapaSF[categoria];
-      break;
+  const verificaTipoJogo = () => {
+    if (tipoJogo === "in") {
+      return "Jogo Internacional";
     }
-    case "dt": {
-      valorIngresso = valoresEtapaDT[categoria];
-      break;
+
+    return "Jogo Doméstico";
+  };
+
+  const imprimeEtapaDoJogo = () => {
+    if (etapaJogo === "sf") {
+      return "Semifinal";
     }
-    case "fi": {
-      valorIngresso = valoresEtapaFI[categoria];
-      break;
+
+    if (etapaJogo === "dt") {
+      return "Decisão de terceiro lugar";
     }
-  }
+
+    return "Final";
+  };
+
+  const selecionarEtapaAtual = () => {
+    if (etapaJogo === "sf") return valoresEtapaSF;
+
+    if (etapaJogo === "dt") return valoresEtapaDT;
+
+    return valoresEtapaFI;
+  };
+
+  const imprimeValor = (quantidade = 1) => {
+    const etapa = selecionarEtapaAtual();
+    const valor = etapa[categoria - 1] * quantidade;
+
+    if (tipoJogo === "do") {
+      return `R$ ${valor}`;
+    }
+
+    return `U$ ${valor / 4.1}`;
+  };
 
   console.log(`---Dados da compra--- 
-  Nome do cliente:  ${nomeCompleto} 
-  Tipo do jogo:   ${tipos[tipoJogo]} 
-  Etapa do jogo:   ${etapas[etapaJogo]} 
-  Categoria:   ${categoria} 
-  Quantidade de Ingressos:   ${quantidadeIngressos} ingressos 
-  ---Valores--- 
-  Valor do ingresso:  ${formataValor(valorIngresso, tipoJogo)}
-  Valor total:   ${formataValor(
-    quantidadeIngressos * valorIngresso,
-    tipoJogo
-  )}`);
-};
+    Nome do cliente:  ${nomeCompleto} 
+    Tipo do jogo:   ${verificaTipoJogo()} 
+    Etapa do jogo:   ${imprimeEtapaDoJogo()} 
+    Categoria:   ${categoria} 
+    Quantidade de Ingressos:   ${quantidadeIngressos} ingressos 
+    ---Valores--- 
+    Valor do ingresso:  ${imprimeValor()}
+    Valor total:   ${imprimeValor(quantidadeIngressos)}`);
+}
 
-vendaIngressos();
+vendaDeIngressos();
