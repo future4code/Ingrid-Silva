@@ -33,14 +33,13 @@ const verificaBichosEstimação = () => {
   if (quantidadeBichosUsuario === 0) {
     console.log("Que pena! Você pode adotar um pet!");
   } else {
-    do {
-      const nomesBichosUsuario = prompt(
-        "Digite o nome do seu bicho de estimação"
-      );
-      bichosArr.push(nomesBichosUsuario);
-    } while (bichosArr.length < quantidadeBichosUsuario);
+    while (bichosArr.length < quantidadeBichosUsuario) {
+      const nomeBicho = prompt("Digite o nome do seu bicho de estimação");
+      bichosArr.push(nomeBicho);
+    }
+
+    console.log(bichosArr);
   }
-  console.log(bichosArr);
 };
 
 // verificaBichosEstimação();
@@ -55,7 +54,7 @@ const imprimeValor = () => {
   }
 };
 
-imprimeValor();
+// imprimeValor();
 
 const valorDividido = () => {
   for (numero of arrayOriginal) {
@@ -63,7 +62,7 @@ const valorDividido = () => {
   }
 };
 
-valorDividido();
+// valorDividido();
 
 const verificaNumPar = () => {
   let arrNumPar = [];
@@ -76,14 +75,20 @@ const verificaNumPar = () => {
   console.log(arrNumPar);
 };
 
-verificaNumPar();
+// verificaNumPar();
 
 const arrStrings = () => {
-  for (let i = 0; i <= arrayOriginal.length - 1; i++) {
-    console.log(`O elemento do index ${i} é: ${arrayOriginal[i]}`);
+  const resultado = [];
+
+  for (let i = 0; i < arrayOriginal.length; i++) {
+    const arr = `O elemento do index ${i} é: ${arrayOriginal[i]}`;
+    resultado.push(arr);
   }
+
+  console.log(resultado);
 };
-arrStrings();
+
+// arrStrings();
 
 const verificaMaiorEMenor = () => {
   let maiorNum = undefined;
@@ -99,4 +104,67 @@ const verificaMaiorEMenor = () => {
   console.log(`O maior número é ${maiorNum} e o menor é ${menorNum}`);
 };
 
-verificaMaiorEMenor();
+// verificaMaiorEMenor();
+
+// Desafio 1
+
+const adivinhaONumero = () => {
+  const numPlayer1 = Number(prompt("Escolha um número"));
+  let numPlayer2;
+  let tentativas = 0;
+
+  console.log("Vamos jogar!");
+
+  do {
+    numPlayer2 = Number(prompt("Adivinhe o número escolhido!"));
+    tentativas++;
+
+    if (numPlayer2 < numPlayer1) {
+      console.log(`Errou. O número escolhido é maior!`);
+    } else if (numPlayer2 > numPlayer1) {
+      console.log(`Errou. O número escolhido é menor!`);
+    }
+
+    console.log(`O número chutado foi: ${numPlayer2}`);
+  } while (numPlayer1 !== numPlayer2);
+
+  console.log("Acertou!");
+  console.log(`O número de tentativas foi: ${tentativas}`);
+};
+
+// adivinhaONumero();
+
+// Desafio 2
+
+const adivinhaNumeroSozinho = () => {
+  const numAleatorio = Math.floor(Math.random() * 100 + 1);
+  let tentativas = 0;
+  let numPlayer;
+  let inputUsuario;
+
+  do {
+    inputUsuario = prompt("Adivinhe o número escolhido!");
+
+    if (inputUsuario === null) return;
+
+    numPlayer = Number(inputUsuario);
+    tentativas++;
+
+    if (numPlayer < numAleatorio) {
+      console.log(`Errou. O número escolhido é maior!`);
+    } else if (numPlayer > numAleatorio) {
+      console.log(`Errou. O número escolhido é menor!`);
+    }
+    console.log(`O número chutado foi: ${numPlayer}`);
+  } while (numPlayer !== numAleatorio && inputUsuario !== null);
+
+  if (numPlayer === numAleatorio) {
+    console.log("Acertou!");
+    console.log(`O número de tentativas foi: ${tentativas}`);
+  }
+};
+
+adivinhaNumeroSozinho();
+
+// Como eu já conhecia o math.floor(), consegui fazer a alteração com facilidade.
+// O mais difícil foi o primeiro desafio, onde tive que pensar na lógica pela 1ª vez.
