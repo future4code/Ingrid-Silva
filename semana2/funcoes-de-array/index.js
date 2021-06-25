@@ -73,12 +73,10 @@ console.log(nomeItem);
 
 // b)
 
-const itemDesconto = produtos.map((produto) => {
-  const produtoAtualizado = { ...produto };
-  produtoAtualizado.preco = produtoAtualizado.preco * 0.95;
-
-  return produtoAtualizado;
-});
+const itemDesconto = produtos.map((produto) => ({
+  nome: produto.nome,
+  preco: produto.preco * 0.95,
+}));
 
 console.log(itemDesconto);
 
