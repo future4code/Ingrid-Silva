@@ -10,10 +10,17 @@ function inverteArray(array) {
 }
 
 // EXERCÍCIO 02
-function retornaNumerosParesElevadosADois(array) {}
+function retornaNumerosParesElevadosADois(array) {
+  const numerosPares = array.filter((num) => num % 2 === 0);
+  const numerosParesElevadosAoQuadrado = numerosPares.map((num) => num ** 2);
+
+  return numerosParesElevadosAoQuadrado;
+}
 
 // EXERCÍCIO 03
-function retornaNumerosPares(array) {}
+function retornaNumerosPares(array) {
+  return array.map((num) => num % 2 == 0);
+}
 
 // EXERCÍCIO 04
 function retornaMaiorNumero(array) {}
