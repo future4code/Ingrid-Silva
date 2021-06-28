@@ -89,13 +89,44 @@ function comparaDoisNumeros(num1, num2) {
 }
 
 // EXERCÍCIO 10
-function segundoMaiorEMenor(array) {}
+function segundoMaiorEMenor(array) {
+  // for(num of array) {
+  //   const index = array[i]
+  //   if(num[i] > num)
+  // }
+
+  let segundoMaiorNumero;
+  let segundoMenorNumero;
+
+  for (let i = array.length - 1; i >= 0; i--) {
+    if (array[i] > array[i - 1]) {
+      let;
+    }
+  }
+}
 
 // EXERCÍCIO 11
 function ordenaArray(array) {}
 
 // EXERCÍCIO 12
-function filmeFavorito() {}
+function filmeFavorito() {
+  const nome = "O Diabo Veste Prada";
+  const ano = 2006;
+  const diretor = "David Frankel";
+  const atores = [
+    "Meryl Streep",
+    "Anne Hathaway",
+    "Emily Blunt",
+    "Stanley Tucci",
+  ];
+
+  return {
+    nome: nome,
+    ano: ano,
+    diretor: diretor,
+    atores: atores,
+  };
+}
 
 // EXERCÍCIO 13
 function imprimeChamada() {
