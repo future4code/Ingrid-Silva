@@ -186,10 +186,24 @@ function anonimizaPessoa(pessoa) {
 }
 
 // EXERCÍCIO 16A
-function maioresDe18(arrayDePessoas) {}
+function maioresDe18(arrayDePessoas) {
+  const maioresDeIdade = arrayDePessoas.filter((pessoa) => {
+    if (pessoa.idade >= 18) {
+      return { nome: arrayDePessoas.nome, idade: arrayDePessoas.idade };
+    }
+  });
+  return maioresDeIdade;
+}
 
 // EXERCÍCIO 16B
-function menoresDe18(arrayDePessoas) {}
+function menoresDe18(arrayDePessoas) {
+  const maioresDeIdade = arrayDePessoas.filter((pessoa) => {
+    if (pessoa.idade < 18) {
+      return { nome: arrayDePessoas.nome, idade: arrayDePessoas.idade };
+    }
+  });
+  return maioresDeIdade;
+}
 
 // EXERCÍCIO 17A
 function multiplicaArrayPor2(array) {}
