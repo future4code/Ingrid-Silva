@@ -90,23 +90,48 @@ function comparaDoisNumeros(num1, num2) {
 
 // EXERCÍCIO 10
 function segundoMaiorEMenor(array) {
-  // for(num of array) {
-  //   const index = array[i]
-  //   if(num[i] > num)
-  // }
+  let len = array.length;
+  let trocado;
 
-  let segundoMaiorNumero;
-  let segundoMenorNumero;
+  do {
+    trocado = false;
 
-  for (let i = array.length - 1; i >= 0; i--) {
-    if (array[i] > array[i - 1]) {
-      let;
+    for (let i = 0; i < len; i++) {
+      if (array[i] > array[i + 1]) {
+        let tmp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = tmp;
+        trocado = true;
+      }
     }
-  }
+  } while (trocado);
+
+  const segundoMaiorNumero = array[array.length - 2];
+  const segundoMenorNumero = array[1];
+
+  return [segundoMaiorNumero, segundoMenorNumero];
 }
 
 // EXERCÍCIO 11
-function ordenaArray(array) {}
+function ordenaArray(array) {
+  let len = array.length;
+  let trocado;
+
+  do {
+    trocado = false;
+
+    for (let i = 0; i < len; i++) {
+      if (array[i] > array[i + 1]) {
+        let tmp = array[i];
+        array[i] = array[i + 1];
+        array[i + 1] = tmp;
+        trocado = true;
+      }
+    }
+  } while (trocado);
+
+  return array;
+}
 
 // EXERCÍCIO 12
 function filmeFavorito() {
