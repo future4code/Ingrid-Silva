@@ -19,7 +19,9 @@ function retornaNumerosParesElevadosADois(array) {
 
 // EXERCÍCIO 03
 function retornaNumerosPares(array) {
-  return array.map((num) => num % 2 == 0);
+  const numerosPares = array.filter((num) => num % 2 === 0);
+
+  return numerosPares;
 }
 
 // EXERCÍCIO 04
