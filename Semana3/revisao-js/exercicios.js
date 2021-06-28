@@ -206,25 +206,115 @@ function menoresDe18(arrayDePessoas) {
 }
 
 // EXERCÍCIO 17A
-function multiplicaArrayPor2(array) {}
+function multiplicaArrayPor2(array) {
+  return array.map((num) => num * 2);
+}
 
 // EXERCÍCIO 17B
-function multiplicaArrayPor2S(array) {}
+function multiplicaArrayPor2S(array) {
+  const numString = array.map((num) => (num * 2).toString());
+  return numString;
+}
 
 // EXERCÍCIO 17C
-function verificaParidade(array) {}
+function verificaParidade(array) {
+  const numerosParidade = array.map((num) => {
+    const paridade = num % 2 === 0 ? "par" : "ímpar";
+
+    return `${num} é ${paridade}`;
+  });
+
+  return numerosParidade;
+}
 
 // EXERCÍCIO 18A
-function retornaPessoasAutorizadas(pessoas) {}
+const verificaPermissaoMontanhaRussa = (pessoa) =>
+  pessoa.idade > 14 && pessoa.idade < 60 && pessoa.altura >= 1.5;
+
+function retornaPessoasAutorizadas(pessoas) {
+  const arrayPessoasAutorizadas = pessoas.filter(
+    verificaPermissaoMontanhaRussa
+  );
+
+  return arrayPessoasAutorizadas;
+}
 
 // EXERCÍCIO 18B
-function retornaPessoasNaoAutorizadas(pessoas) {}
+function retornaPessoasNaoAutorizadas(pessoas) {
+  const arrayPessoasNaoAutorizadas = pessoas.filter(
+    (pessoa) => !verificaPermissaoMontanhaRussa(pessoa)
+  );
+
+  return arrayPessoasNaoAutorizadas;
+}
 
 // EXERCÍCIO 19A
-function ordenaPorNome(consultasNome) {}
+function ordenaPorNome(consultasNome) {
+  let len = consultasNome.length;
+  let trocado;
+
+  do {
+    trocado = false;
+
+    for (let i = 0; i < len; i++) {
+      const atual = consultasNome[i];
+      const proximo = consultasNome[i + 1];
+
+      if (proximo && atual.nome.localeCompare(proximo.nome) === 1) {
+        let tmp = consultasNome[i];
+        consultasNome[i] = consultasNome[i + 1];
+        consultasNome[i + 1] = tmp;
+        trocado = true;
+      }
+    }
+  } while (trocado);
+
+  return consultasNome;
+}
 
 // EXERCÍCIO 19B
-function ordenaPorData(consultasData) {}
+function criaObjetoData(consulta) {
+  const data = consulta.dataDaConsulta.split("/");
+  return new Date(data[2], data[1], data[0]);
+}
+
+function ordenaPorData(consultasData) {
+  let len = consultasData.length;
+  let trocado;
+
+  do {
+    trocado = false;
+
+    for (let i = 0; i < len; i++) {
+      const atual = consultasData[i];
+      const proximo = consultasData[i + 1];
+
+      if (!proximo) continue;
+
+      const data1 = criaObjetoData(atual);
+      const data2 = criaObjetoData(proximo);
+
+      if (data1 > data2) {
+        let tmp = consultasData[i];
+        consultasData[i] = consultasData[i + 1];
+        consultasData[i + 1] = tmp;
+        trocado = true;
+      }
+    }
+  } while (trocado);
+
+  return consultasData;
+}
 
 // EXERCÍCIO 20
-function calculaSaldo(contas) {}
+function calculaSaldo(contas) {
+  for (conta of contas) {
+    const somaCompras = conta.compras.reduce((acc, curr) => {
+      return acc + curr;
+    }, 0);
+
+    conta.saldoTotal = conta.saldoTotal - somaCompras;
+  }
+
+  return contas;
+}
