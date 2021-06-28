@@ -41,7 +41,17 @@ function retornaExpressoesBooleanas() {
 }
 
 // EXERCÍCIO 07
-function retornaNNumerosPares(n) {}
+function retornaNNumerosPares(n) {
+  const pares = [];
+
+  for (let i = 0; i < n * 2; i++) {
+    if (i % 2 === 0) {
+      pares.push(i);
+    }
+  }
+
+  return pares;
+}
 
 // EXERCÍCIO 08
 function checaTriangulo(a, b, c) {
