@@ -130,7 +130,14 @@ function filmeFavorito() {
 
 // EXERCÍCIO 13
 function imprimeChamada() {
-  // "Venha assistir ao filme NOME_DO_FILME, de ANO, dirigido por DIRECAO e estrelado por ELENCO."
+  const Astrodev = {
+    nome: "O Diabo Veste Prada",
+    ano: 2006,
+    diretor: "David Frankel",
+    atores: ["Meryl Streep", "Anne Hathaway", "Emily Blunt", "Stanley Tucci"],
+  };
+
+  return `Venha assistir ao filme ${Astrodev.nome}, de ${Astrodev.ano}, dirigido por ${Astrodev.diretor} e estrelado por ${Astrodev.atores[0]}, ${Astrodev.atores[1]}, ${Astrodev.atores[2]}, ${Astrodev.atores[3]}.`;
 }
 
 // EXERCÍCIO 14
