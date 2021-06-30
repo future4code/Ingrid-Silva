@@ -1,0 +1,98 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.cabecalho {
+  font-family: "Dancing Script", sans-serif;
+  background-color: #2a292e;
+  color: #ced537;
+  text-align: center;
+  padding: 30px;
+  font-size: 32px;
+}
+
+.menu {
+  font-size: 15px;
+  font-family: "Tahoma", sans-serif;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.menu a {
+  text-decoration: none;
+  margin-right: 20px;
+  color: #ced537;
+}
+
+.menu a:hover {
+  color: rgba(206, 213, 55, 0.5);
+}
+
+.icones img {
+  height: 40px;
+  width: 40px;
+}
+
+.slogan {
+  color: #fff;
+  background: url(./img/organicos.jpg) no-repeat;
+  background-size: cover;
+}
+
+.slogan .overlay {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  font-family: "Tahoma", sans-serif;
+}
+
+.slogan h2 {
+  font-size: 45px;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-family: "Dancing Script", sans-serif;
+}
+
+.slogan p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 450px;
+}
+
+footer {
+  background-color: #ced537;
+  display: flex;
+  justify-content: space-between;
+  color: #2a292e;
+  font-family: "Dancing Script", sans-serif;
+  font-size: 35px;
+  padding: 20px;
+}
+
+.produtos ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+.produtos p {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Tahoma", sans-serif;
+}
+
+.price {
+  margin-top: 10px;
+}
+
+table img {
+  max-width: 100px;
+  display: block;
+  object-fit: contain;
+}
