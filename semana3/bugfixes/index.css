@@ -20,6 +20,8 @@ h2 {
 input {
   height: 20px;
   width: 500px;
+  border: none;
+  border-bottom: 1px solid black;
 }
 
 button:focus {
@@ -47,10 +49,20 @@ div > p:first-child {
 .container {
   height: 500px;
   text-align: center;
+  padding: 50px;
 }
 
 .icone {
   height: 15px;
+  cursor: pointer;
+}
+
+.icone:hover {
+  opacity: 0.5;
+}
+
+.icone:active {
+  opacity: 1;
 }
 
 /** 
@@ -131,7 +143,10 @@ table img {
   margin-top: 50px;
 }
 
-.btn--comprar:hover {
+.btn--comprar:active {
   color: #fff;
+}
+
+.btn--comprar:hover {
   background-color: #ad8e05;
 }
