@@ -191,6 +191,7 @@ table img {
   height: 200px;
   border-radius: 50%;
   margin-top: 20px;
+  object-fit: cover;
 }
 
 .container-funcionarios ul {
