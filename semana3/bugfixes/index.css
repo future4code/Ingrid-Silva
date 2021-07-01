@@ -129,3 +129,8 @@ table img {
   text-align: center;
   margin-top: 50px;
 }
+
+.btn--comprar:hover {
+  color: #fff;
+  background-color: #ad8e05;
+}
