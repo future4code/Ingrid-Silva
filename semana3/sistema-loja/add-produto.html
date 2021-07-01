@@ -25,40 +25,50 @@
         </nav>
       </div>
     </header>
+    <div class="container-add--produto">
+      <h2 class="page-title">Adicionar Produto</h2>
+      <form class="add-produto--form" action="">
+        <div>
+          <label for="link-foto">Link para foto: </label>
+          <input type="url" id="link-foto" name="link-foto" />
+        </div>
 
-    <h2>Adicionar Produto</h2>
-    <form action="">
-      <div>
-        <label for="link-foto">Link para foto: </label>
-        <input type="url" id="link-foto" name="link-foto" />
-      </div>
+        <div>
+          <label for="descricao">Descrição do produto: </label>
+          <!-- Adicione o id apropriado para o input abaixo -->
+          <input type="text" id="descricao" name="descrição" />
+        </div>
 
-      <div>
-        <label for="descricao">Descrição do produto: </label>
-        <!-- Adicione o id apropriado para o input abaixo -->
-        <input type="text" id="descricao" name="descrição" />
-      </div>
+        <div>
+          <label for="preco">Preço (em R$): </label>
+          <!-- Adicione o id apropriado e o type para receber números abaixo -->
+          <input type="number" id="preco" name="preço" />
+        </div>
 
-      <div>
-        <label for="preco">Preço (em R$): </label>
-        <!-- Adicione o id apropriado e o type para receber números abaixo -->
-        <input type="number" id="preco" name="preço" />
-      </div>
+        <div>
+          <!-- Preencha as propriedades necessárias para os elementos abaixo -->
+          <label for="quantidade-preco">Quantidade disponível: </label>
+          <input
+            type="number"
+            id="quantidade-disponivel"
+            name="quantidade--disponivel"
+          />
+        </div>
 
-      <div>
-        <!-- Preencha as propriedades necessárias para os elementos abaixo -->
-        <label for="quantidade-preco">Quantidade disponível: </label>
-        <input
-          type="number"
-          id="quantidade-disponivel"
-          name="quantidade--disponivel"
-        />
-      </div>
+        <div class="form-add">
+          <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
+          <button class="btn" type="submit">Adicionar</button>
+        </div>
+      </form>
+    </div>
 
-      <div class="form-add">
-        <!-- Adicione ao type do botão abaixo o valor para que ele submeta o formulário -->
-        <button type="submit">Adicionar</button>
+    <footer>
+      <p>Siga-nos nas redes sociais!</p>
+      <div class="icones">
+        <img src="https://image.flaticon.com/icons/png/512/25/25305.png" />
+        <img src="https://image.flaticon.com/icons/png/512/25/25425.png" />
+        <img src="https://image.flaticon.com/icons/png/512/8/8800.png" />
       </div>
-    </form>
+    </footer>
   </body>
 </html>

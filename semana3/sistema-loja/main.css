@@ -76,6 +76,9 @@ footer {
   padding: 20px;
 }
 
+.produtos {
+  background-color: #e6e6e6;
+}
 .produtos ul li {
   display: inline-block;
   padding: 20px;
@@ -95,4 +98,112 @@ table img {
   max-width: 100px;
   display: block;
   object-fit: contain;
+  margin: 0 auto;
+}
+
+.container-tabela {
+  font-family: "Tahoma", sans-serif;
+  padding: 40px 20px;
+  background-color: #e6e6e6;
+}
+
+.container-tabela table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.container-tabela table th {
+  padding: 40px;
+  font-size: 20px;
+}
+
+.container-tabela table td {
+  font-size: 18px;
+  text-align: center;
+}
+
+.container-tabela table th,
+.container-tabela table td {
+  border: #2a292e solid 3px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  font-family: "Tahoma", sans-serif;
+  padding: 20px;
+}
+
+.add-produto--form {
+  font-family: "Tahoma", sans-serif;
+  padding: 30px;
+  text-align: center;
+}
+
+.add-produto--form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.add-produto--form > div {
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.add-produto--form label {
+  width: 200px;
+  text-align: left;
+}
+
+.add-produto--form input {
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.container-add--produto {
+  background-color: #e6e6e6;
+}
+
+.btn {
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 50%;
+  margin: 20px;
+  margin-left: 200px;
+  background-color: #2a292e;
+  color: #ced537;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.container-funcionarios {
+  background-color: #e6e6e6;
+  padding: 30px;
+}
+.container-funcionarios img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.container-funcionarios ul {
+  display: flex;
+  justify-content: center;
+}
+
+.container-funcionarios li {
+  font-family: "Dancing Script", sans-serif;
+  font-size: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
 }
