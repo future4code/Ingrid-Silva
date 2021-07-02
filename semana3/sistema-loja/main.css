@@ -1,0 +1,209 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+.cabecalho {
+  font-family: "Dancing Script", sans-serif;
+  background-color: #2a292e;
+  color: #ced537;
+  text-align: center;
+  padding: 30px;
+  font-size: 32px;
+}
+
+.menu {
+  font-size: 15px;
+  font-family: "Tahoma", sans-serif;
+  margin-top: 25px;
+  text-align: center;
+}
+
+.menu a {
+  text-decoration: none;
+  margin-right: 20px;
+  color: #ced537;
+}
+
+.menu a:hover {
+  color: rgba(206, 213, 55, 0.5);
+}
+
+.icones img {
+  height: 40px;
+  width: 40px;
+}
+
+.slogan {
+  color: #fff;
+  background: url(./img/organicos.jpg) no-repeat;
+  background-size: cover;
+}
+
+.slogan .overlay {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 300px;
+  padding: 20px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  font-family: "Tahoma", sans-serif;
+}
+
+.slogan h2 {
+  font-size: 45px;
+  line-height: 1;
+  margin-bottom: 20px;
+  font-family: "Dancing Script", sans-serif;
+}
+
+.slogan p {
+  font-size: 16px;
+  line-height: 1.5;
+  max-width: 450px;
+}
+
+footer {
+  background-color: #ced537;
+  display: flex;
+  justify-content: space-between;
+  color: #2a292e;
+  font-family: "Dancing Script", sans-serif;
+  font-size: 35px;
+  padding: 20px;
+}
+
+.produtos {
+  background-color: #e6e6e6;
+}
+.produtos ul li {
+  display: inline-block;
+  padding: 20px;
+}
+
+.produtos p {
+  text-align: center;
+  font-size: 18px;
+  font-family: "Tahoma", sans-serif;
+}
+
+.price {
+  margin-top: 10px;
+}
+
+table img {
+  max-width: 100px;
+  display: block;
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.container-tabela {
+  font-family: "Tahoma", sans-serif;
+  padding: 40px 20px;
+  background-color: #e6e6e6;
+}
+
+.container-tabela table {
+  border-collapse: collapse;
+  margin: 0 auto;
+}
+
+.container-tabela table th {
+  padding: 40px;
+  font-size: 20px;
+}
+
+.container-tabela table td {
+  font-size: 18px;
+  text-align: center;
+}
+
+.container-tabela table th,
+.container-tabela table td {
+  border: #2a292e solid 3px;
+}
+
+.page-title {
+  text-align: center;
+  font-size: 32px;
+  font-family: "Tahoma", sans-serif;
+  padding: 20px;
+}
+
+.add-produto--form {
+  font-family: "Tahoma", sans-serif;
+  padding: 30px;
+  text-align: center;
+}
+
+.add-produto--form {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.add-produto--form > div {
+  align-items: center;
+  display: flex;
+  margin-bottom: 15px;
+}
+
+.add-produto--form label {
+  width: 200px;
+  text-align: left;
+}
+
+.add-produto--form input {
+  padding: 5px 10px;
+  width: 100%;
+}
+
+.container-add--produto {
+  background-color: #e6e6e6;
+}
+
+.btn {
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 50%;
+  margin: 20px;
+  margin-left: 200px;
+  background-color: #2a292e;
+  color: #ced537;
+  cursor: pointer;
+  box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+.btn:hover {
+  background-color: rgba(0, 0, 0, 0.75);
+}
+
+.container-funcionarios {
+  background-color: #e6e6e6;
+  padding: 30px;
+}
+.container-funcionarios img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-top: 20px;
+}
+
+.container-funcionarios ul {
+  display: flex;
+  justify-content: center;
+}
+
+.container-funcionarios li {
+  font-family: "Dancing Script", sans-serif;
+  font-size: 32px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+  text-align: center;
+}

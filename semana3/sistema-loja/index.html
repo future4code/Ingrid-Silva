@@ -1,36 +1,79 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Mercadinho da Ingrid</title>
-</head>
-<body>
-    <div>
-        <h1>Bem-vind@ ao <em>Mercadinho da Ingrid</em>!</h1>
-        <p>Economizar é comprar bem </p>
+    <link rel="stylesheet" href="main.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="cabecalho">
+      <h1>Bem-vind@ ao Mercadinho da Ingrid</h1>
+      <div class="menu">
+        <nav>
+          <a href="index.html">Página Inicial</a>
+          <a href="ctrl-estoque.html">Controle de Estoque</a>
+          <a href="add-produto.html">Adicionar Produto</a>
+          <a href="funcionarios.html">Funcionários</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="slogan">
+      <div class="overlay">
+        <h2>$ Economizar é <em>comprar bem</em> $</h2>
+        <p>
+          Aqui você encontra produtos orgânicos com preços acessíveis. Todo dia
+          temos um monte de ofertas te esperando. Não deixe de conferir!
+        </p>
+      </div>
     </div>
 
-    <div>
-        <a href="index.html">Página Inicial</a>
-        <a href="ctrl-estoque.html">Controle de Estoque</a>
-        <a href="add-produto.html">Adicionar Produto</a>
-        <a href="funcionarios.html">Funcionários</a>
+    <div class="produtos">
+      <ul>
+        <li>
+          <img src="img/brocolis.png" alt="Imagem de brócolis" />
+          <p>Brócolis</p>
+          <p class="price">Preço: R$ 3,99</p>
+        </li>
+        <li>
+          <img src="img/cenoura.png" alt="Imagem de cenoura" />
+          <p>Cenoura</p>
+          <p class="price">Preço: R$ 1,99</p>
+        </li>
+        <li>
+          <img src="img/melancia.png" alt="Imagem de melancia" />
+          <p>Melancia</p>
+          <p class="price">Preço: R$ 7,99</p>
+        </li>
+        <li>
+          <img src="img/pera.png" alt="Imagem de pera" />
+          <p>Pera</p>
+          <p class="price">Preço: R$ 4,99</p>
+        </li>
+        <li>
+          <img src="img/tomate.png" alt="Imagem de tomate" />
+          <p>Tomate</p>
+          <p class="price">Preço: R$ 3,50</p>
+        </li>
+        <li></li>
+      </ul>
     </div>
 
-    <div>
-        <!-- ADICIONAR INFORMAÇOES SOBRE SUA LOJINHA -->
-    </div>
-
-    <div>
-        <p>Siga-nos nas redes sociais!</p>
-
-        <div>
-            <img src="https://image.flaticon.com/icons/png/512/25/25305.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/25/25425.png"/>
-            <img src="https://image.flaticon.com/icons/png/512/8/8800.png"/>
-        </div>
-    </div>
-</body>
+    <footer>
+      <p>Siga-nos nas redes sociais!</p>
+      <div class="icones">
+        <img src="https://image.flaticon.com/icons/png/512/25/25305.png" />
+        <img src="https://image.flaticon.com/icons/png/512/25/25425.png" />
+        <img src="https://image.flaticon.com/icons/png/512/8/8800.png" />
+      </div>
+    </footer>
+  </body>
 </html>
