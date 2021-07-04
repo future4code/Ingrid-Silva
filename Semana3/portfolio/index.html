@@ -6,12 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Ingrid Flack</title>
 
-    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="main.css" />
+    <script
+      src="https://kit.fontawesome.com/3166ef59bf.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <header id="header">
@@ -45,7 +48,7 @@
               area. Currently I am dedicated daily to the study of technologies
               such as HTML, CSS and Javascript, through courses offered by
               several study platforms, such as Udemy, Codecademy and Digital
-              Innovation One. 
+              Innovation One.
             </p>
             <p>
               Last month, I took a crucial step in my training as a software
@@ -69,23 +72,22 @@
           <div>
             <ul>
               <li>
-                <img />
-                <h5>Web Full Stack at Labenu</h5>
+                <h5>Web Full Stack at <span class="labenu">Labenu</span></h5>
                 <p>
                   In this course i've been studying about front end
-                  technologies, like HTML 5 , CSS 3, JavaScript, React and Jest.
-                  Also i'm studying about Backend technologies, as Node,
-                  TypeScript, MySQL, AWS and FireBase
+                  technologies, like HTML 5 , CSS 3, JavaScript, and some
+                  Backend technologies too, as Node, TypeScript, MySQL, AWS and
+                  FireBase
                 </p>
               </li>
               <li>
                 <img />
-                <h5>Udemy</h5>
+                <h5 class="udemy">Udemy</h5>
                 <p>The Complete JavaScript Course 2021: From Zero to Expert</p>
               </li>
               <li>
                 <img />
-                <h5>Udemy</h5>
+                <h5 class="udemy">Udemy</h5>
                 <p>
                   Essentials in JavaScript ES6 - A Fun and Clear Introduction
                 </p>
@@ -95,48 +97,62 @@
         </div>
       </section>
 
-      </section>
       <section id="my-works" class="section">
         <div class="container">
           <header>
             <h2 class="section-title">My <strong>Works</strong></h2>
-            <p>
-              Here you can access some of my main projects
-            </p>
+            <p>Here you can access some of my main projects</p>
           </header>
 
           <div class="my-works-list">
-            <div class="my-works-item">
+            <a href="mercadinho.html" class="my-works-item">
               <img src="img/mercadinho.png" />
-              <div class="my-works-item-overlay">
-                <h4>Mercadinho</h4>
-              </div>
-            </div>
-            <div class="my-works-item">
+              <span class="my-works-item-overlay">
+                <div class="learn-more">
+                  <h4>LEARN MORE</h4>
+                </div>
+              </span>
+            </a>
+            <a href="snake.html" class="my-works-item">
               <img src="img/snake.png" />
-              <div class="my-works-item-overlay">
-                <h4>Snake Game</h4>
-              </div>
-            </div>
-            <div class="my-works-item">
+              <span class="my-works-item-overlay">
+                <div class="learn-more">
+                  <h4>LEARN MORE</h4>
+                </div>
+              </span>
+            </a>
+
+            <a href="dice-game.html" class="my-works-item">
               <img src="img/number.png" />
-              <div class="my-works-item-overlay">
-                <h4>Dice game</h4>
-              </div>
-            </div>   
+              <span class="my-works-item-overlay">
+                <div class="learn-more">
+                  <h4>LEARN MORE</h4>
+                </div>
+              </span>
+            </a>
+            <a href="guess-number.html" class="my-works-item">
+              <img
+                src="img/screencapture-naughty-play-surge-sh-2021-07-04-14_11_08.png"
+              />
+              <span class="my-works-item-overlay">
+                <div class="learn-more">
+                  <h4>LEARN MORE</h4>
+                </div>
+              </span>
+            </a>
           </div>
         </div>
       </section>
-     
+
       <section id="contact-me" class="section">
         <div class="container">
           <header>
             <h2 class="section-title"><strong>Contact</strong> Me</h2>
             <p>
-              To find out more about my work or request a quote, fill out the form below.
+              To find out more about my work or request a quote, fill out the
+              form below.
             </p>
           </header>
-
 
           <form class="form">
             <div class="form-input-group">
@@ -153,14 +169,14 @@
                 placeholder="Your Email*"
               />
             </div>
-         
+
             <textarea
               rows="5"
               name="message"
               class="form-input-message"
               placeholder="Your message"
             ></textarea>
-            <button class="form-button">Send message</button>
+            <button class="button">Send message</button>
           </form>
         </div>
       </section>
@@ -170,21 +186,21 @@
         <ul class="icons-list">
           <li class="list-inline-item">
             <a href="https://www.instagram.com/ingridflack/">
-              <img src="img/dog.png" />
+              <i class="fab fa-instagram"></i>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://www.linkedin.com/in/ingrid-flack/">
-              <img src="img/dog.png" />
+              <i class="fab fa-linkedin"></i>
             </a>
           </li>
           <li class="list-inline-item">
             <a href="https://github.com/ingridflack">
-              <img src="img/dog.png" />
+              <i class="fab fa-github-square"></i>
             </a>
           </li>
         </ul>
-        <p>Developed by Ingrid Flack</p>
+        <p>Developed by Ingrid Flack ©2021</p>
       </div>
     </footer>
   </body>
