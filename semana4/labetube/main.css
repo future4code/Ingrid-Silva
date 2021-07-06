@@ -6,39 +6,74 @@
   color: #fff;
 }
 
+.logo {
+  text-decoration: none;
+  font-size: 25px;
+}
+
 .navbar {
   display: flex;
   justify-content: space-between;
   background-color: #9e39e1;
-  color: #fff;
-  padding: 20px;
+  padding: 15px;
 }
 
 .navbar form input {
+  color: #333;
   padding: 10px;
   border: 1px solid #9e39e1;
   border-radius: 5px;
   width: 300px;
 }
 
-.video img {
-  width: 300px;
-}
-
 main {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 20px;
-  padding: 20px;
+  gap: 10px;
+  padding: 10px;
+}
+
+.video {
+  display: grid;
+  padding: 10px;
+}
+
+.video img {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 .video-title {
-  color: #9e39e1;
+  color: #333;
   text-align: center;
+  margin-top: 20px;
+  font-weight: 800;
 }
 
 .footer {
   background-color: #9e39e1;
-  padding: 50px;
+  padding: 35px;
   text-align: center;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+section p {
+  color: #333;
+  text-align: center;
+  font-weight: 800;
+  padding: 30px;
+  font-size: 30px;
+}
+
+.video-player {
+  width: 888px;
+  height: 500px;
+  padding: 20px;
 }
