@@ -2,26 +2,29 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: "Bebas Neue", cursive;
   color: #fff;
+  font-size: 20px;
 }
 
 .logo {
   text-decoration: none;
-  font-size: 25px;
+  font-size: 32px;
+  font-family: "Lobster", cursive;
+  text-shadow: 2px 2px #333;
 }
 
 .navbar {
   display: flex;
   justify-content: space-between;
-  background-color: #9e39e1;
+  background-color: #713c87;
   padding: 15px;
 }
 
 .navbar form input {
   color: #333;
   padding: 10px;
-  border: 1px solid #9e39e1;
+  border: 1px solid #713c87;
   border-radius: 5px;
   width: 300px;
 }
@@ -36,12 +39,14 @@ main {
 .video {
   display: grid;
   padding: 10px;
+  text-decoration: none;
 }
 
 .video img {
   width: 100%;
   height: auto;
   display: block;
+  border-radius: 5px;
 }
 
 .video-title {
@@ -52,9 +57,13 @@ main {
 }
 
 .footer {
-  background-color: #9e39e1;
+  background-color: #713c87;
   padding: 35px;
   text-align: center;
+}
+
+.footer p {
+  text-shadow: 2px 2px #333;
 }
 
 section {
