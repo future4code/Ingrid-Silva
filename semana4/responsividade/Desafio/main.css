@@ -1,0 +1,149 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.cabecalho {
+  background-color: #ff0000;
+  height: 80px;
+  grid-area: header;
+}
+
+.blocos {
+  display: grid;
+  gap: 20px;
+  grid-template-areas: "azul1" "amarelo1" "verde1" "azul2" "amarelo2" "verde2" "preto1" "preto2" "branco1" "branco2" "branco3";
+  padding: 20px;
+  grid-area: content;
+}
+
+.blocos > div {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.sidebar {
+  background-color: #777;
+  display: none;
+  grid-area: sidebar;
+  padding: 20px;
+}
+
+.sidebar p,
+.sidebar ul {
+  margin-bottom: 20px;
+}
+
+.blocos div {
+  padding: 50px;
+}
+
+.azul1,
+.azul2 {
+  background-color: #1a00ff;
+}
+
+.azul1 {
+  grid-area: azul1;
+}
+
+.azul2 {
+  grid-area: azul2;
+}
+
+.amarelo1,
+.amarelo2 {
+  background-color: #ffff00;
+}
+
+.amarelo1 {
+  grid-area: amarelo1;
+}
+
+.amarelo2 {
+  grid-area: amarelo2;
+}
+
+.verde1,
+.verde2 {
+  background-color: #008000;
+}
+
+.verde1 {
+  grid-area: verde1;
+}
+
+.verde2 {
+  grid-area: verde2;
+}
+
+.preto1,
+.preto2 {
+  background-color: #000;
+  color: #ffff;
+}
+
+.preto1 {
+  grid-area: preto1;
+}
+
+.preto2 {
+  grid-area: preto2;
+}
+
+.branco1,
+.branco2,
+.branco3 {
+  border: 2px black solid;
+}
+
+.branco1 {
+  grid-area: branco1;
+}
+
+.branco2 {
+  grid-area: branco2;
+}
+
+.branco3 {
+  grid-area: branco3;
+}
+
+@media (min-width: 768px) {
+  .blocos {
+    grid-template-areas:
+      "azul1 amarelo1"
+      "verde1 verde1"
+      "azul2 amarelo2"
+      "verde2 verde2"
+      "preto1 preto2"
+      "branco1 branco2"
+      "branco3 branco3";
+  }
+}
+
+@media (min-width: 1024px) {
+  body {
+    display: grid;
+    grid-template-areas:
+      "sidebar header"
+      "sidebar content";
+    grid-template-columns: 300px auto;
+    grid-template-rows: 80px auto;
+    min-height: 100vh;
+  }
+
+  .sidebar {
+    display: block;
+  }
+
+  .blocos {
+    grid-template-areas:
+      "azul1 azul1 amarelo1 amarelo1 verde1 verde1"
+      "azul2 azul2 amarelo2 amarelo2 verde2 verde2"
+      "preto1 preto1 preto1 preto2 preto2 preto2"
+      "branco1 branco1 branco2 branco2 branco3 branco3";
+  }
+}
