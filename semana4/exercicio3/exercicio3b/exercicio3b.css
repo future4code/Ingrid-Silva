@@ -1,0 +1,114 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  font-size: 10px;
+  color: white;
+}
+
+#main-container {
+  display: grid;
+  grid-template-areas: "top" "pink" "middle" "footer";
+  grid-template-rows: 5% 60% 30% 5%;
+  height: 100%;
+}
+
+#top-container {
+  display: grid;
+  grid-area: top;
+  grid-template-areas: "verde amarelo amarelo amarelo";
+}
+
+#middle-container {
+  display: grid;
+  grid-area: middle;
+  grid-template-areas: "content2 content2 blank vertical";
+  grid-template-columns: repeat(4, 25%);
+}
+
+#vertical-middle-container {
+  display: grid;
+  grid-area: vertical;
+  grid-template-areas: "vermelho" "vclaro";
+}
+
+#footer {
+  display: grid;
+  grid-area: footer;
+  grid-template-areas: "roxo";
+}
+
+#content2 {
+  display: grid;
+  grid-area: content2;
+  grid-template-areas: "azul";
+}
+
+#image {
+  display: grid;
+  grid-template-areas: "vermelho";
+}
+
+#extra {
+  display: grid;
+  grid-template-areas: "vclaro";
+}
+
+#blank {
+  grid-area: blank;
+}
+
+.green-background,
+.yellow-background,
+.blue-background,
+.red-background,
+.lightgreen-background,
+.purple-background,
+.pink-background {
+  align-items: center;
+  display: grid;
+  font-size: 16px;
+  justify-content: center;
+}
+
+/* Colors */
+.green-background {
+  background-color: green;
+  grid-area: verde;
+}
+
+.yellow-background {
+  background-color: yellow;
+  grid-area: amarelo;
+}
+
+.pink-background {
+  background-color: fuchsia;
+  grid-area: pink;
+}
+
+.blue-background {
+  background-color: blue;
+  grid-area: azul;
+}
+
+.red-background {
+  background-color: red;
+  grid-area: vermelho;
+}
+
+.lightgreen-background {
+  background-color: lightgreen;
+  display: grid;
+  grid-area: vclaro;
+}
+
+.purple-background {
+  background-color: purple;
+  grid-area: roxo;
+}
