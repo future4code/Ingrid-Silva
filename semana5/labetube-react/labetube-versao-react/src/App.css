@@ -68,10 +68,23 @@ main {
   flex-basis: 200px;
   border-right-style: solid;
   border-right-width: thin;
+  display: flex;
+  justify-content: space-between;
+  flex-shrink: 0;
 }
 
-.botoes-meunu-vertical {
+.botoes-menu-vertical {
   list-style-type: none;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.botoes-menu-vertical a {
+  display: flex;
+}
+
+.botoes-menu-vertical a > svg {
+  margin-right: 10px;
 }
 
 .painel-de-videos {
@@ -79,8 +92,11 @@ main {
   padding-top: 20px;
   flex-grow: 1;
   display: grid;
-  grid-template-columns: repeat(4, 24.8% 0.2%);
+  /* grid-template-columns: repeat(4, 24.8% 0.2%); */
+  grid-template-columns: 1 fr 1fr 1fr 1fr;
   grid-template-rows: repeat(4, 270px 20px);
+  gap: 10px;
+  margin-right: 20px;
 }
 
 .media1 {
@@ -127,12 +143,19 @@ main {
   display: grid;
   grid-template-rows: 3fr 1fr;
   grid-template-columns: 1fr;
-  border-style: solid;
-  border-width: thin;
   align-items: start;
   justify-items: stretch;
 }
 
+.box-pagina-principal p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.box-pagina-principal h4 {
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
 footer {
   height: 10%;
   background-color: #ff0000;
@@ -141,6 +164,7 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: 20px;
 }
 
 .text-footer {
@@ -149,8 +173,4 @@ footer {
 .box-pagina-principal > img {
   width: 100%;
   height: 200px;
-}
-
-h4 {
-  margin-left: 20px;
 }
