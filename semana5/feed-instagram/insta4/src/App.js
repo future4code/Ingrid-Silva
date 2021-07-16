@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Post from "./components/Post/Post";
+import Header from "./components/Header/Header";
 import PerfilIngrid from "./img/perfil.jpg";
 import PerfilDudu from "./img/dudu.jfif";
 import Post1 from "./img/batatinha.jpg";
@@ -103,6 +104,8 @@ class App extends React.Component {
   render() {
     return (
       <MainContainer>
+        <Header>Oi</Header>
+
         <Form onSubmit={this.adicionaPost}>
           <Input
             value={this.state.nomeUsuario}
