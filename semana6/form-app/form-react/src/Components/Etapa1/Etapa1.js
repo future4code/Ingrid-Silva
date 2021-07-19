@@ -9,17 +9,31 @@ class Etapa1 extends React.Component {
     idade: "",
     email: "",
     escolaridade: "",
+    erros: {},
   };
 
   aoSubmeterForm = (event) => {
     event.preventDefault();
 
-    if (
-      this.state.nome === "" ||
-      this.state.idade === "" ||
-      this.state.email === "" ||
-      this.state.escolaridade === ""
-    ) {
+    const erros = {};
+
+    if (this.state.nome === "") {
+      erros.nome = "Preencha seu nome";
+    }
+
+    if (this.state.idade === "") {
+      erros.idade = "Preencha sua idade";
+    }
+
+    if (this.state.email === "") {
+      erros.email = "Preencha seu email";
+    }
+
+    if (this.state.escolaridade === "") {
+      erros.escolaridade = "Preencha sua escolaridade";
+    }
+
+    if (Object.keys(erros).length) {
       alert("Preencha todas as perguntas antes de prosseguir");
     } else {
       const proximaEtapa =
@@ -30,6 +44,8 @@ class Etapa1 extends React.Component {
 
       this.props.passaEtapa(event, proximaEtapa);
     }
+
+    this.setState({ erros });
   };
 
   aoMudarInput = (event) => {
@@ -48,18 +64,21 @@ class Etapa1 extends React.Component {
             value={this.state.nome}
             onChange={this.aoMudarInput}
             pergunta="1. Qual é o seu nome?"
+            erro={this.state.erros?.nome}
           />
           <PerguntaAberta
             name="idade"
             value={this.state.idade}
             onChange={this.aoMudarInput}
             pergunta="2. Qual é a sua idade?"
+            erro={this.state.erros?.idade}
           />
           <PerguntaAberta
             name="email"
             value={this.state.email}
             onChange={this.aoMudarInput}
             pergunta="3. Qual é o seu email?"
+            erro={this.state.erros?.email}
           />
           <PerguntaFechada
             pergunta=" 4. Qual é a sua escolaridade?"
@@ -72,6 +91,7 @@ class Etapa1 extends React.Component {
             name="escolaridade"
             value={this.state.escolaridade}
             onChange={this.aoMudarInput}
+            erro={this.state.erros?.escolaridade}
           />
           <Button>Próxima etapa</Button>
         </Form>

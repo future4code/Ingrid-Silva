@@ -11,7 +11,6 @@ export const Button = styled.button`
   background-color: #00288c;
   color: #fff;
   font-weight: 700;
-  margin-top: 40px;
   cursor: pointer;
 `;
 export const Titulo = styled.h1`
