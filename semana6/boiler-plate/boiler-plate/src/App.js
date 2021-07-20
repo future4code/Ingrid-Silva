@@ -13,8 +13,9 @@ const Tarefa = styled.li`
 `;
 
 const InputsContainer = styled.div`
-  display: grid;
-  grid-auto-flow: column;
+  display: flex;
+  flex-direction: column;
+  /* grid-auto-flow: column; */
   gap: 10px;
 `;
 
@@ -34,6 +35,16 @@ class App extends React.Component {
     ],
     inputValue: "",
     filtro: "",
+    inputBusca: "",
+    inputTarefaAlterada: "",
+  };
+
+  mostraInputAlterarTarefa = (event) => {
+    this.setState({});
+  };
+
+  onChangeTarefaAlterda = (event) => {
+    this.setState({ inputTarefaAlterada: event.target.value });
   };
 
   componentDidUpdate(_, prevState) {
@@ -42,13 +53,17 @@ class App extends React.Component {
     }
   }
 
-  componentDidMount() {}
-
   onChangeInput = (event) => {
     this.setState({ inputValue: event.target.value });
   };
 
-  criaTarefa = () => {
+  criaTarefa = (event) => {
+    event.preventDefault();
+
+    if (!this.state.inputValue.length) {
+      return;
+    }
+
     const novaTarefa = {
       id: Date.now(),
       texto: this.state.inputValue,
@@ -56,7 +71,7 @@ class App extends React.Component {
     };
     const novaListaTarefas = [...this.state.tarefas, novaTarefa];
 
-    this.setState({ tarefas: novaListaTarefas });
+    this.setState({ tarefas: novaListaTarefas, inputValue: "" });
   };
 
   selectTarefa = (id) => {
@@ -89,29 +104,57 @@ class App extends React.Component {
     this.setState({ tarefas: tarefas });
   };
 
+  onChangeBusca = (event) => {
+    this.setState({ inputBusca: event.target.value });
+  };
+
+  filtroPorStatus = (tarefa) => {
+    switch (this.state.filtro) {
+      case "pendentes":
+        return !tarefa.completa;
+      case "completas":
+        return tarefa.completa;
+      default:
+        return true;
+    }
+  };
+
+  filtroPorNome = (tarefa) => {
+    return tarefa.texto
+      .toLowerCase()
+      .includes(this.state.inputBusca.toLowerCase());
+  };
+
   render() {
     console.log(this.state.tarefas);
 
-    const listaFiltrada = this.state.tarefas.filter((tarefa) => {
-      switch (this.state.filtro) {
-        case "pendentes":
-          return !tarefa.completa;
-        case "completas":
-          return tarefa.completa;
-        default:
-          return true;
-      }
-    });
+    const listaFiltrada = this.state.tarefas
+      .filter(this.filtroPorStatus)
+      .filter(this.filtroPorNome);
 
     return (
       <div className="App">
         <h1>Lista de tarefas</h1>
         <InputsContainer>
-          <input value={this.state.inputValue} onChange={this.onChangeInput} />
-          <button onClick={this.criaTarefa}>Adicionar</button>
-          <button onClick={this.onClickDeleteTarefas}>
-            Remover lista de tarefas
-          </button>
+          <form onSubmit={this.criaTarefa}>
+            <input
+              required
+              value={this.state.inputValue}
+              onChange={this.onChangeInput}
+            />
+            <button>Adicionar</button>
+            <button type="button" onClick={this.onClickDeleteTarefas}>
+              Remover lista de tarefas
+            </button>
+            <br />
+
+            <input
+              type="search"
+              value={this.state.inputBusca}
+              onChange={this.onChangeBusca}
+              placeholder="Procurar tarefa"
+            />
+          </form>
         </InputsContainer>
         <br />
 
@@ -123,6 +166,7 @@ class App extends React.Component {
             <option value="completas">Completas</option>
           </select>
         </InputsContainer>
+
         <TarefaList>
           {listaFiltrada.map((tarefa) => {
             return (
@@ -130,12 +174,21 @@ class App extends React.Component {
                 <span onClick={() => this.selectTarefa(tarefa.id)}>
                   {tarefa.texto}
                 </span>
+
+                <input
+                  value={this.state.inputTarefaAlterada}
+                  placeholder="Alterar tarefa"
+                />
+
+                <button onClick={this.mostraInputAlterarTarefa}>Editar</button>
                 <button onClick={() => this.onClickDeleteTarefa(tarefa.id)}>
-                  Remover lista de tarefas
+                  Remover
                 </button>
               </Tarefa>
             );
           })}
+
+          {listaFiltrada.length === 0 && <p>Nenhum item</p>}
         </TarefaList>
       </div>
     );
