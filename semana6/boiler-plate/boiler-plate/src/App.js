@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import TarefaItem from "./components/TarefaItem";
 import "./styles.css";
 
 const TarefaList = styled.ul`
@@ -7,15 +8,10 @@ const TarefaList = styled.ul`
   width: 200px;
 `;
 
-const Tarefa = styled.li`
-  text-align: left;
-  text-decoration: ${({ completa }) => (completa ? "line-through" : "none")};
-`;
-
 const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
-  /* grid-auto-flow: column; */
+
   gap: 10px;
 `;
 
@@ -36,15 +32,7 @@ class App extends React.Component {
     inputValue: "",
     filtro: "",
     inputBusca: "",
-    inputTarefaAlterada: "",
-  };
-
-  mostraInputAlterarTarefa = (event) => {
-    this.setState({});
-  };
-
-  onChangeTarefaAlterda = (event) => {
-    this.setState({ inputTarefaAlterada: event.target.value });
+    ordenacao: "ASC",
   };
 
   componentDidUpdate(_, prevState) {
@@ -60,9 +48,7 @@ class App extends React.Component {
   criaTarefa = (event) => {
     event.preventDefault();
 
-    if (!this.state.inputValue.length) {
-      return;
-    }
+    if (!this.state.inputValue.length) return;
 
     const novaTarefa = {
       id: Date.now(),
@@ -72,6 +58,21 @@ class App extends React.Component {
     const novaListaTarefas = [...this.state.tarefas, novaTarefa];
 
     this.setState({ tarefas: novaListaTarefas, inputValue: "" });
+  };
+
+  aoEditarTarefa = (id, novoTexto) => {
+    const tarefas = this.state.tarefas.map((tarefa) => {
+      if (tarefa.id === id) {
+        return {
+          ...tarefa,
+          texto: novoTexto,
+        };
+      }
+
+      return tarefa;
+    });
+
+    this.setState({ tarefas: tarefas });
   };
 
   selectTarefa = (id) => {
@@ -125,16 +126,35 @@ class App extends React.Component {
       .includes(this.state.inputBusca.toLowerCase());
   };
 
-  render() {
-    console.log(this.state.tarefas);
+  alteraOrdenacao = (ordenacao) => {
+    this.setState({ ordenacao: ordenacao });
+  };
 
+  render() {
     const listaFiltrada = this.state.tarefas
       .filter(this.filtroPorStatus)
       .filter(this.filtroPorNome);
 
+    listaFiltrada.sort((a, b) => {
+      if (this.state.ordenacao === "ASC") {
+        if (a.texto < b.texto) return -1;
+
+        if (a.texto > b.texto) return 1;
+
+        return 0;
+      } else if (this.state.ordenacao === "DESC") {
+        if (a.texto < b.texto) return 1;
+
+        if (a.texto > b.texto) return -1;
+
+        return 0;
+      }
+    });
+
     return (
       <div className="App">
         <h1>Lista de tarefas</h1>
+
         <InputsContainer>
           <form onSubmit={this.criaTarefa}>
             <input
@@ -156,7 +176,6 @@ class App extends React.Component {
             />
           </form>
         </InputsContainer>
-        <br />
 
         <InputsContainer>
           <label>Filtro</label>
@@ -167,24 +186,24 @@ class App extends React.Component {
           </select>
         </InputsContainer>
 
+        <InputsContainer>
+          <label>Ordenação</label>
+          <button onClick={() => this.alteraOrdenacao("ASC")}>
+            Ascendente
+          </button>
+          <button onClick={() => this.alteraOrdenacao("DESC")}>
+            Descendente
+          </button>
+        </InputsContainer>
+
         <TarefaList>
           {listaFiltrada.map((tarefa) => {
             return (
-              <Tarefa key={tarefa.id} completa={tarefa.completa}>
-                <span onClick={() => this.selectTarefa(tarefa.id)}>
-                  {tarefa.texto}
-                </span>
-
-                <input
-                  value={this.state.inputTarefaAlterada}
-                  placeholder="Alterar tarefa"
-                />
-
-                <button onClick={this.mostraInputAlterarTarefa}>Editar</button>
-                <button onClick={() => this.onClickDeleteTarefa(tarefa.id)}>
-                  Remover
-                </button>
-              </Tarefa>
+              <TarefaItem
+                key={tarefa.id}
+                tarefa={tarefa}
+                aoEditarTarefa={this.aoEditarTarefa}
+              />
             );
           })}
 
