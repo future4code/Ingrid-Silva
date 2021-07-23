@@ -69,7 +69,6 @@ class Post extends React.Component {
     curtido: false,
     numeroCurtidas: 0,
     comentando: false,
-    numeroComentarios: 0,
     marcado: false,
     compartilhado: false,
     valorInputComentarioPost: "",
@@ -107,16 +106,12 @@ class Post extends React.Component {
   };
 
   onClickComentario = () => {
-    this.setState({
-      comentando: !this.state.comentando,
-    });
+    this.setState({ comentando: !this.state.comentando });
   };
 
-  aoEnviarComentario = () => {
-    this.setState({
-      comentando: false,
-      numeroComentarios: this.state.numeroComentarios + 1,
-    });
+  aoEnviarComentario = (comentario) => {
+    this.props.adicionaComentario(this.props.post.id, comentario);
+    this.setState({ comentando: false });
   };
 
   render() {
@@ -128,14 +123,19 @@ class Post extends React.Component {
       iconeCurtida = iconeCoracaoBranco;
     }
 
+    console.log(this.props.post);
+
     return (
       <PostContainer>
         <PostHeader>
-          <UserPhoto src={this.props.fotoUsuario} alt={"Imagem do usuario"} />
-          <p>{this.props.nomeUsuario}</p>
+          <UserPhoto
+            src={this.props.post.fotoUsuario}
+            alt={"Imagem do usuario"}
+          />
+          <p>{this.props.post.nomeUsuario}</p>
         </PostHeader>
 
-        <PostPhoto src={this.props.fotoPost} alt={"Imagem do post"} />
+        <PostPhoto src={this.props.post.fotoPost} alt={"Imagem do post"} />
 
         <PostFooter>
           <IconeComContador
@@ -146,7 +146,7 @@ class Post extends React.Component {
           <IconeComContador
             icone={iconeComentario}
             onClickIcone={this.onClickComentario}
-            valorContador={this.state.numeroComentarios}
+            valorContador={this.props.post.comentarios.length}
           />
           <FontAwesomeIcon
             icon={this.state.marcado ? faBookmarkSolid : faBookmarkRegular}
@@ -193,6 +193,12 @@ class Post extends React.Component {
         {this.state.comentando && (
           <SecaoComentario aoEnviar={this.aoEnviarComentario} />
         )}
+
+        {this.props.post.comentarios.map((comentario, index) => (
+          <div key={index}>
+            <p>{comentario}</p>
+          </div>
+        ))}
       </PostContainer>
     );
   }

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-const CommentContainer = styled.div`
+const CommentContainer = styled.form`
   display: flex;
   justify-content: center;
   padding: 5px;
@@ -19,18 +19,23 @@ export class SecaoComentario extends Component {
 
   onChangeComentario = (event) => {
     this.setState({ valorInputComentario: event.target.value });
-    console.log(event.target.value);
+  };
+
+  onSubmit = (event) => {
+    event.preventDefault();
+    this.props.aoEnviar(this.state.valorInputComentario);
   };
 
   render() {
     return (
-      <CommentContainer>
+      <CommentContainer onSubmit={this.onSubmit}>
         <InputComentario
           placeholder="Comentário"
           value={this.state.valorInputComentario}
           onChange={this.onChangeComentario}
+          autoFocus
         />
-        <button onClick={this.props.aoEnviar}>Enviar</button>
+        <button>Enviar</button>
       </CommentContainer>
     );
   }
