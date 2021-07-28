@@ -15,6 +15,7 @@ export default class TelaUsuarios extends Component {
   state = {
     users: [],
     selectedUser: null,
+    inputBusca: "",
   };
 
   componentDidMount() {
@@ -34,6 +35,7 @@ export default class TelaUsuarios extends Component {
 
   clearSelectedUser = () => {
     this.setState({ selectedUser: null });
+    this.fetchUsers();
   };
 
   deleteUser = (id) => {
@@ -62,6 +64,25 @@ export default class TelaUsuarios extends Component {
     this.setState({ selectedUser: id });
   };
 
+  handleInputBusca = (e) => {
+    this.setState({ inputBusca: e.target.value });
+  };
+  searchUser = (e) => {
+    e.preventDefault();
+
+    const params = {
+      name: this.state.inputBusca,
+    };
+
+    console.log(params);
+
+    axios
+      .get(`${url}/search`, { params: params, headers: headers.headers })
+      .then((response) => {
+        this.setState({ users: response.data });
+      });
+  };
+
   render() {
     if (this.state.selectedUser !== null) {
       return (
@@ -75,14 +96,25 @@ export default class TelaUsuarios extends Component {
 
     return (
       <div>
-        {this.state.users.map((user) => (
-          <div key={user.id}>
-            <p onClick={() => this.handleSelectUser(user.id)}>{user.name}</p>
-            <button onClick={() => this.deleteUser(user.id)}>X</button>
-          </div>
-        ))}
+        <form>
+          <input
+            value={this.state.inputBusca}
+            onChange={this.handleInputBusca}
+            placeholder="Procurar usuário"
+          />
+          <button onClick={this.searchUser}>Buscar</button>
+        </form>
 
-        {!this.state.users.length && <p>Nenhum usuário cadastrado</p>}
+        <div>
+          {this.state.users.map((user) => (
+            <div key={user.id}>
+              <p onClick={() => this.handleSelectUser(user.id)}>{user.name}</p>
+              <button onClick={() => this.deleteUser(user.id)}>X</button>
+            </div>
+          ))}
+
+          {!this.state.users.length && <p>Nenhum usuário cadastrado</p>}
+        </div>
       </div>
     );
   }
