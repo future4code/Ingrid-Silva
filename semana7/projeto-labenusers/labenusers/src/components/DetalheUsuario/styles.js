@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  margin: 50px;
   padding: 15px 80px;
   border-radius: 10px;
   border: none;
@@ -11,6 +10,8 @@ export const Button = styled.button`
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  margin: 50px auto;
+  display: block;
 
   &:focus {
     outline: 0;
@@ -70,22 +71,25 @@ export const Mensagem = styled.p`
 
 export const ContainerDados = styled.div`
   display: flex;
-  max-width: 400px;
+  max-width: 800px;
+  align-items: center;
+  justify-content: center;
 `;
 
 export const Dados = styled.p`
   color: #fff;
   font-size: 20px;
   width: 100%;
+  margin-right: 20px;
 `;
 
 export const Edit = styled.button`
   background-color: #faf566;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px 20px;
+  border-radius: 5px;
   border: none;
-  margin: 0 auto;
-
+  margin-right: 20px;
+  cursor: pointer;
   &:hover {
     background-color: #e5e055;
   }
@@ -93,12 +97,21 @@ export const Edit = styled.button`
 
 export const Cancelar = styled.button`
   background-color: #faf566;
-  padding: 10px;
-  border-radius: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
   border: none;
-  margin: 0 auto;
-
   &:hover {
     background-color: #e5e055;
   }
 `;
+
+export const Input = styled.input`
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin-right: 20px;
+`;
+
+export const Container = styled.div``;

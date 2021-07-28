@@ -49,4 +49,5 @@ export const RemoveButton = styled.div`
 
 export const Nome = styled.p`
   font-size: 20px;
+  cursor: pointer;
 `;

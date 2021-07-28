@@ -7,6 +7,8 @@ import {
   ContainerDados,
   Edit,
   Cancelar,
+  Container,
+  Input,
 } from "./styles";
 
 const url =
@@ -52,15 +54,17 @@ export default class DetalheUsuario extends Component {
     this.setState({ novoEmail: e.target.value });
   };
 
-  editUser = () => {
+  editUser = (e) => {
+    e.preventDefault();
     const body = { name: this.state.novoNome, email: this.state.novoEmail };
 
     axios.put(`${url}/${this.props.id}`, body, headers).then((res) => {
-      console.log(res);
-      this.setState({ user: body, editarUsuario: false });
+      alert("Dados alterados com sucesso");
+      this.setState({
+        user: { ...this.state.user, ...body },
+        editarUsuario: false,
+      });
     });
-
-    alert("Dados alterados com sucesso");
   };
 
   render() {
@@ -73,43 +77,39 @@ export default class DetalheUsuario extends Component {
         {!this.state.user ? (
           <Mensagem>Carregando usuário...</Mensagem>
         ) : (
-          <div>
+          <Container>
             {this.state.editarUsuario ? (
-              <form>
-                <input
+              <form onSubmit={this.editUser}>
+                <Input
                   value={this.state.novoNome}
                   onChange={this.handleNewName}
                   placeholder="Digite o nome"
                 />
-                <input
+                <Input
                   value={this.state.novoEmail}
                   onChange={this.handleNewEmail}
                   placeholder="Digite o e-mail"
                 />
+
+                <Edit type="button" onClick={this.handleToggleEditarUsuario}>
+                  Cancelar
+                </Edit>
+                <Edit>Salvar</Edit>
               </form>
             ) : (
               <ContainerDados>
                 <Dados>{this.state.user.name}</Dados>
                 <Dados>{this.state.user.email}</Dados>
-              </ContainerDados>
-            )}
 
-            {!this.state.editarUsuario ? (
-              <>
                 <Edit onClick={this.handleToggleEditarUsuario}>Editar</Edit>
                 <Cancelar
                   onClick={() => this.props.deleteUser(this.state.user.id)}
                 >
                   X
                 </Cancelar>
-              </>
-            ) : (
-              <>
-                <Edit onClick={this.handleToggleEditarUsuario}>Cancelar</Edit>
-                <Edit onClick={this.editUser}>Salvar</Edit>
-              </>
+              </ContainerDados>
             )}
-          </div>
+          </Container>
         )}
       </div>
     );
