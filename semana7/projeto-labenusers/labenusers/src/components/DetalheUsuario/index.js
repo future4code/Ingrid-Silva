@@ -1,5 +1,13 @@
 import axios from "axios";
 import React, { Component } from "react";
+import {
+  Button,
+  Mensagem,
+  Dados,
+  ContainerDados,
+  Edit,
+  Cancelar,
+} from "./styles";
 
 const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
@@ -58,12 +66,12 @@ export default class DetalheUsuario extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.clearSelectedUser}>
+        <Button onClick={this.props.clearSelectedUser}>
           Voltar para a listagem
-        </button>
+        </Button>
 
         {!this.state.user ? (
-          <p>Carregando usuário...</p>
+          <Mensagem>Carregando usuário...</Mensagem>
         ) : (
           <div>
             {this.state.editarUsuario ? (
@@ -80,27 +88,25 @@ export default class DetalheUsuario extends Component {
                 />
               </form>
             ) : (
-              <div>
-                <p>{this.state.user.name}</p>
-                <p>{this.state.user.email}</p>
-              </div>
+              <ContainerDados>
+                <Dados>{this.state.user.name}</Dados>
+                <Dados>{this.state.user.email}</Dados>
+              </ContainerDados>
             )}
 
             {!this.state.editarUsuario ? (
               <>
-                <button onClick={this.handleToggleEditarUsuario}>Editar</button>
-                <button
+                <Edit onClick={this.handleToggleEditarUsuario}>Editar</Edit>
+                <Cancelar
                   onClick={() => this.props.deleteUser(this.state.user.id)}
                 >
                   X
-                </button>
+                </Cancelar>
               </>
             ) : (
               <>
-                <button onClick={this.handleToggleEditarUsuario}>
-                  Cancelar
-                </button>
-                <button onClick={this.editUser}>Salvar</button>
+                <Edit onClick={this.handleToggleEditarUsuario}>Cancelar</Edit>
+                <Edit onClick={this.editUser}>Salvar</Edit>
               </>
             )}
           </div>

@@ -1,51 +1,6 @@
-import React, { Component } from "react";
 import styled from "styled-components";
 
-import TelaRegistro from "./components/TelaRegistro/index";
-import TelaUsuarios from "./components/TelaUsuarios/index";
-
-export default class App extends Component {
-  state = {
-    tela: "registro",
-  };
-
-  handlePageChange = () => {
-    this.setState({
-      tela: this.state.tela === "registro" ? "usuarios" : "registro",
-    });
-  };
-
-  render() {
-    return (
-      <Container>
-        {this.state.tela === "registro" ? <TelaRegistro /> : <TelaUsuarios />}
-        <ButtonContainer>
-          <Button onClick={this.handlePageChange}>
-            Ir para a página de{" "}
-            {this.state.tela === "registro" ? "usuarios" : "registro"}
-          </Button>
-        </ButtonContainer>
-      </Container>
-    );
-  }
-}
-
-const Container = styled.div`
-  display: flex;
-  background-color: #202731;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  flex-direction: column;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-const Button = styled.button`
+export const Button = styled.button`
   margin: 50px;
   padding: 15px 80px;
   border-radius: 10px;
@@ -105,5 +60,45 @@ const Button = styled.button`
       opacity: 1;
       transition: 0.7s;
     }
+  }
+`;
+
+export const Mensagem = styled.p`
+  color: #fff;
+  text-align: center;
+`;
+
+export const ContainerDados = styled.div`
+  display: flex;
+  max-width: 400px;
+`;
+
+export const Dados = styled.p`
+  color: #fff;
+  font-size: 20px;
+  width: 100%;
+`;
+
+export const Edit = styled.button`
+  background-color: #faf566;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #e5e055;
+  }
+`;
+
+export const Cancelar = styled.button`
+  background-color: #faf566;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  margin: 0 auto;
+
+  &:hover {
+    background-color: #e5e055;
   }
 `;

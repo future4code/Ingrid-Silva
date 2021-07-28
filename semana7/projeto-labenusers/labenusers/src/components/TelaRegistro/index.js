@@ -1,5 +1,14 @@
 import axios from "axios";
 import React, { Component } from "react";
+import {
+  Form,
+  Input,
+  InputGroup,
+  Label,
+  Button,
+  Titulo,
+  Container,
+} from "./styles";
 
 const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
@@ -44,13 +53,28 @@ export default class TelaRegistro extends Component {
 
   render() {
     return (
-      <form onSubmit={this.addUser}>
-        <label>Nome:</label>
-        <input value={this.state.inputName} onChange={this.handleInputName} />
-        <label>E-mail:</label>
-        <input value={this.state.inputEmail} onChange={this.handleInputEmail} />
-        <button>Salvar</button>
-      </form>
+      <Container>
+        <Titulo>LabeUsers Form</Titulo>
+        <Form onSubmit={this.addUser}>
+          <InputGroup>
+            <Label>Nome:</Label>
+            <Input
+              placeholder="Digite o seu nome"
+              value={this.state.inputName}
+              onChange={this.handleInputName}
+            />
+          </InputGroup>
+          <InputGroup>
+            <Label>E-mail:</Label>
+            <Input
+              placeholder="Digite o seu e-mail"
+              value={this.state.inputEmail}
+              onChange={this.handleInputEmail}
+            />
+          </InputGroup>
+          <Button>Salvar</Button>
+        </Form>
+      </Container>
     );
   }
 }
