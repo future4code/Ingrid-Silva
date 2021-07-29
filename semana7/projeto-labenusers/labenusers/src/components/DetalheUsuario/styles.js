@@ -1,52 +1,6 @@
-import React, { Component } from "react";
 import styled from "styled-components";
 
-import TelaRegistro from "./components/TelaRegistro/index";
-import TelaUsuarios from "./components/TelaUsuarios/index";
-
-export default class App extends Component {
-  state = {
-    tela: "registro",
-  };
-
-  handlePageChange = () => {
-    this.setState({
-      tela: this.state.tela === "registro" ? "usuarios" : "registro",
-    });
-  };
-
-  render() {
-    return (
-      <Container>
-        {this.state.tela === "registro" ? <TelaRegistro /> : <TelaUsuarios />}
-        <ButtonContainer>
-          <Button onClick={this.handlePageChange}>
-            Ir para a página de{" "}
-            {this.state.tela === "registro" ? "usuarios" : "registro"}
-          </Button>
-        </ButtonContainer>
-      </Container>
-    );
-  }
-}
-
-const Container = styled.div`
-  display: flex;
-  background-color: #202731;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  flex-direction: column;
-`;
-
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
-const Button = styled.button`
-  margin: 50px;
+export const Button = styled.button`
   padding: 15px 80px;
   border-radius: 10px;
   border: none;
@@ -56,6 +10,8 @@ const Button = styled.button`
   box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.1);
   position: relative;
   overflow: hidden;
+  margin: 50px auto;
+  display: block;
 
   &:focus {
     outline: 0;
@@ -107,3 +63,55 @@ const Button = styled.button`
     }
   }
 `;
+
+export const Mensagem = styled.p`
+  color: #fff;
+  text-align: center;
+`;
+
+export const ContainerDados = styled.div`
+  display: flex;
+  max-width: 800px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const Dados = styled.p`
+  color: #fff;
+  font-size: 20px;
+  width: 100%;
+  margin-right: 20px;
+`;
+
+export const Edit = styled.button`
+  background-color: #faf566;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 20px;
+  cursor: pointer;
+  &:hover {
+    background-color: #e5e055;
+  }
+`;
+
+export const Cancelar = styled.button`
+  background-color: #faf566;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  border: none;
+  &:hover {
+    background-color: #e5e055;
+  }
+`;
+
+export const Input = styled.input`
+  padding: 10px 20px;
+  border-radius: 10px;
+  outline: none;
+  border: none;
+  margin-right: 20px;
+`;
+
+export const Container = styled.div``;

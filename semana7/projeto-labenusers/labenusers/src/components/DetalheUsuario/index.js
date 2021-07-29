@@ -1,5 +1,15 @@
 import axios from "axios";
 import React, { Component } from "react";
+import {
+  Button,
+  Mensagem,
+  Dados,
+  ContainerDados,
+  Edit,
+  Cancelar,
+  Container,
+  Input,
+} from "./styles";
 
 const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
@@ -44,66 +54,62 @@ export default class DetalheUsuario extends Component {
     this.setState({ novoEmail: e.target.value });
   };
 
-  editUser = () => {
+  editUser = (e) => {
+    e.preventDefault();
     const body = { name: this.state.novoNome, email: this.state.novoEmail };
 
     axios.put(`${url}/${this.props.id}`, body, headers).then((res) => {
-      console.log(res);
-      this.setState({ user: body, editarUsuario: false });
+      alert("Dados alterados com sucesso");
+      this.setState({
+        user: { ...this.state.user, ...body },
+        editarUsuario: false,
+      });
     });
-
-    alert("Dados alterados com sucesso");
   };
 
   render() {
     return (
       <div>
-        <button onClick={this.props.clearSelectedUser}>
+        <Button onClick={this.props.clearSelectedUser}>
           Voltar para a listagem
-        </button>
+        </Button>
 
         {!this.state.user ? (
-          <p>Carregando usuário...</p>
+          <Mensagem>Carregando usuário...</Mensagem>
         ) : (
-          <div>
+          <Container>
             {this.state.editarUsuario ? (
-              <form>
-                <input
+              <form onSubmit={this.editUser}>
+                <Input
                   value={this.state.novoNome}
                   onChange={this.handleNewName}
                   placeholder="Digite o nome"
                 />
-                <input
+                <Input
                   value={this.state.novoEmail}
                   onChange={this.handleNewEmail}
                   placeholder="Digite o e-mail"
                 />
+
+                <Edit type="button" onClick={this.handleToggleEditarUsuario}>
+                  Cancelar
+                </Edit>
+                <Edit>Salvar</Edit>
               </form>
             ) : (
-              <div>
-                <p>{this.state.user.name}</p>
-                <p>{this.state.user.email}</p>
-              </div>
-            )}
+              <ContainerDados>
+                <Dados>{this.state.user.name}</Dados>
+                <Dados>{this.state.user.email}</Dados>
 
-            {!this.state.editarUsuario ? (
-              <>
-                <button onClick={this.handleToggleEditarUsuario}>Editar</button>
-                <button
+                <Edit onClick={this.handleToggleEditarUsuario}>Editar</Edit>
+                <Cancelar
                   onClick={() => this.props.deleteUser(this.state.user.id)}
                 >
                   X
-                </button>
-              </>
-            ) : (
-              <>
-                <button onClick={this.handleToggleEditarUsuario}>
-                  Cancelar
-                </button>
-                <button onClick={this.editUser}>Salvar</button>
-              </>
+                </Cancelar>
+              </ContainerDados>
             )}
-          </div>
+          </Container>
         )}
       </div>
     );

@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { Component } from "react";
 import DetalheUsuario from "../DetalheUsuario";
+import { Form, Input, Button, UserList, RemoveButton, Nome } from "./styles";
 
 const url =
   "https://us-central1-labenu-apis.cloudfunctions.net/labenusers/users";
@@ -96,21 +97,25 @@ export default class TelaUsuarios extends Component {
 
     return (
       <div>
-        <form>
-          <input
+        <Form>
+          <Input
             value={this.state.inputBusca}
             onChange={this.handleInputBusca}
             placeholder="Procurar usuário"
           />
-          <button onClick={this.searchUser}>Buscar</button>
-        </form>
+          <Button onClick={this.searchUser}>Buscar</Button>
+        </Form>
 
         <div>
           {this.state.users.map((user) => (
-            <div key={user.id}>
-              <p onClick={() => this.handleSelectUser(user.id)}>{user.name}</p>
-              <button onClick={() => this.deleteUser(user.id)}>X</button>
-            </div>
+            <UserList key={user.id}>
+              <Nome onClick={() => this.handleSelectUser(user.id)}>
+                {user.name}
+              </Nome>
+              <RemoveButton onClick={() => this.deleteUser(user.id)}>
+                X
+              </RemoveButton>
+            </UserList>
           ))}
 
           {!this.state.users.length && <p>Nenhum usuário cadastrado</p>}
