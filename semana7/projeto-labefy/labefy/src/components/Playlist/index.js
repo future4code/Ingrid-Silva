@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 
 export default class Playlist extends Component {
-  state = {
-    // isAdding: false,
-  };
-
   renderFormTrack = () => {
     return (
       <form>
@@ -60,7 +56,7 @@ export default class Playlist extends Component {
 
         {this.renderTracks(this.props.playlist)}
 
-        {isAdding && this.renderFormTrack()}
+        {/* {this.renderFormTrack()} */}
       </div>
     );
   }
