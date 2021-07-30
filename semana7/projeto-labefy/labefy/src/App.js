@@ -14,23 +14,9 @@ export default class App extends Component {
   state = {
     inputPlaylist: "",
     playlists: [],
-    inputMusicName: "",
-    inputArtist: "",
-    inputMusicUrl: "",
   };
-
   handleInputPlayist = (e) => {
     this.setState({ inputPlaylist: e.target.value });
-  };
-
-  handleInputMusicName = (e) => {
-    this.setState({ inputMusicName: e.target.value });
-  };
-  handleInputArtist = (e) => {
-    this.setState({ inputArtist: e.target.value });
-  };
-  handleInputMusicUrl = (e) => {
-    this.setState({ inputMusicUrl: e.target.value });
   };
 
   createPlaylist = async () => {
@@ -86,11 +72,12 @@ export default class App extends Component {
     }
   };
 
-  addTrack = async (id) => {
+  addTrack = async (e, id, body) => {
+    e.preventDefault();
     try {
-      await axios.post(`${url}/${id}/tracks`, headers);
-      this.setState({ inputMusicName: "", inputArtist: "", inputMusicUrl: "" });
+      await axios.post(`${url}/${id}/tracks`, body, headers);
       this.getPlaylistDetails(id);
+      alert("A música FOI");
     } catch (err) {
       alert(err);
     }
@@ -113,7 +100,13 @@ export default class App extends Component {
 
   renderPlaylists = () => {
     return this.state.playlists.map((playlist) => (
-      <Playlist key={playlist.id} playlist={playlist} />
+      <Playlist
+        getPlaylistDetails={this.getPlaylistDetails}
+        deletePlaylist={this.deletePlaylist}
+        addTrack={this.addTrack}
+        key={playlist.id}
+        playlist={playlist}
+      />
     ));
   };
 
@@ -122,7 +115,6 @@ export default class App extends Component {
       <div>
         {this.renderForm()}
         {this.renderPlaylists()}
-        {this.renderFormTrack()}
       </div>
     );
   }
