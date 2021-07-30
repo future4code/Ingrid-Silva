@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 export default class Playlist extends Component {
   state = {
-    isAdding: false,
+    // isAdding: false,
   };
 
   renderFormTrack = () => {

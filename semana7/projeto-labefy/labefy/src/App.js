@@ -117,29 +117,6 @@ export default class App extends Component {
     ));
   };
 
-  renderFormTrack = () => {
-    return (
-      <form>
-        <input
-          value={this.state.inputMusicName}
-          onChange={this.handleInputMusicName}
-          placeholder="Digite o nome da música"
-        ></input>
-        <input
-          value={this.state.inputArtist}
-          onChange={this.handleInputArtist}
-          placeholder="Digite o nome do artista"
-        ></input>
-        <input
-          value={this.state.inputMusicUrl}
-          onChange={this.handleInputMusicUrl}
-          placeholder="Cole aqui a URL da música"
-        ></input>
-        <button>Adicionar música</button>
-      </form>
-    );
-  };
-
   render() {
     return (
       <div>
