@@ -1,7 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-import { Like, Dislike, Button, Container, BoxBtn } from "./styles";
+import {
+  Like,
+  Dislike,
+  Button,
+  Container,
+  BoxBtn,
+  ContainerSemOpcoes,
+} from "./styles";
 import CardProfile from "../CardProfile";
 import ItsAMatch from "../ItsAMatch";
 import Header from "../Header";
@@ -79,7 +86,11 @@ function Cards(props) {
           </BoxBtn>
         </>
       ) : (
-        <p>As opções de perfis esgotaram :(</p>
+        <ContainerSemOpcoes>
+          <Header changePage={props.changePage} />
+
+          <p>As opções de perfis esgotaram!</p>
+        </ContainerSemOpcoes>
       )}
 
       {hasMatch && (

@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# Astromatch
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+O projeto Astromatch tem como inspiração o App de relacionamentos Tinder. No Astromatch é possível dar match nos mais variados astros e, - caso você tenha sorte -, pode receber um match de volta!
 
-## Available Scripts
+## Link de acesso
 
-In the project directory, you can run:
+https://astromatch-ingrid.surge.sh/
 
-### `yarn start`
+## Desenvolvedora
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Ingrid Erci Flack da Silva
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Tecnologias Utilizadas
 
-### `yarn test`
+- ReactJs
+- Styled Components
+- Axios
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Funcionalidades
 
-### `yarn build`
+- O usuário pode ver cards de perfis com sua determinada descrição (foto, nome, idade e bio);
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- O usuário pode dar "like" e "dislike" nos perfis, conforme seu gosto;
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- Ao dar like, o usuário poderá ser correspondido, recebendo uma mensagem que informa que ocorreu um "match";
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- O usuário tem a opção de visualizar todos os matches correspondidos ao clicar no botão "Ver matches";
 
-### `yarn eject`
+- O usuário pode resetar os matches clicando no botão "Limpar matches";
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- Em todas as páginas existe a opção de voltar para a tela inicial;
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- O projeto é responsivo para desktops, tablets e smartphones.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## Status do projeto
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+Concluído ✅
 
-## Learn More
+## Telas
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- Tela Inicial
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+![alt](./src/assets/images/telainicial.png)
 
-### Code Splitting
+- Tela com perfis
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+![alt](./src/assets/images/like.png)
 
-### Analyzing the Bundle Size
+- Tela com matches
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+![alt](./src/assets/images/matches.png)
 
-### Making a Progressive Web App
+- Tela quando esgotaram as opções de perfis
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+![alt](./src/assets/images/esgotaram.png)

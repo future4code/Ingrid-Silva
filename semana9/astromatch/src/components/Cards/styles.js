@@ -45,3 +45,19 @@ export const Container = styled.div`
   position: relative;
   overflow: hidden;
 `;
+
+export const ContainerSemOpcoes = styled.div`
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 600px;
+  padding: 20px 40px;
+
+  > p {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 20px;
+  }
+`;
