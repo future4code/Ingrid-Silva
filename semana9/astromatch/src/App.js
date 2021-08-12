@@ -16,7 +16,7 @@ function App() {
   const renderPage = () => {
     switch (page) {
       case "cards":
-        return <Cards />;
+        return <Cards changePage={changePage} />;
       case "matches":
         return <Matches changePage={changePage} />;
       default:

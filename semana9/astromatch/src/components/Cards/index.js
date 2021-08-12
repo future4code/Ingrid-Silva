@@ -4,8 +4,9 @@ import axios from "axios";
 import { Like, Dislike, Button, Container, BoxBtn } from "./styles";
 import CardProfile from "../CardProfile";
 import ItsAMatch from "../ItsAMatch";
+import Header from "../Header";
 
-function Cards() {
+function Cards(props) {
   const [profile, setProfile] = useState({});
   const [hasMatch, setHasMatch] = useState(false);
 
@@ -38,13 +39,19 @@ function Cards() {
         body
       )
       .then((response) => {
-        getProfile();
         const isMatch = response.data.isMatch;
 
         if (isMatch) {
           setHasMatch(true);
+        } else {
+          getProfile();
         }
       });
+  };
+
+  const resetMatch = () => {
+    setHasMatch(false);
+    getProfile();
   };
 
   const likePerson = () => {
@@ -59,6 +66,8 @@ function Cards() {
     <Container>
       {profile ? (
         <>
+          <Header changePage={props.changePage} />
+
           <CardProfile profile={profile} />
           <BoxBtn>
             <Button onClick={likePerson}>
@@ -73,7 +82,13 @@ function Cards() {
         <p>As opções de perfis esgotaram :(</p>
       )}
 
-      {hasMatch && <ItsAMatch />}
+      {hasMatch && (
+        <ItsAMatch
+          profile={profile}
+          resetMatch={resetMatch}
+          changePage={props.changePage}
+        />
+      )}
     </Container>
   );
 }

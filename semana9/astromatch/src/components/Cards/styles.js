@@ -2,20 +2,17 @@ import styled from "styled-components";
 
 import { AiFillDislike, AiFillLike } from "react-icons/ai";
 
-export const Like = styled(AiFillLike)`
-  font-size: 40px;
-  color: #eb4b6d;
-`;
-export const Dislike = styled(AiFillDislike)`
-  font-size: 40px;
-  color: #eb4b6d;
-`;
+export const Like = styled(AiFillLike)``;
+export const Dislike = styled(AiFillDislike)``;
 
 export const Button = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
+  font-size: 40px;
+  color: #fff;
   margin-right: 60px;
+  transition: transform 200ms ease;
 
   &:hover {
     transform: scale(1.5);
@@ -34,6 +31,7 @@ export const BoxBtn = styled.div`
 `;
 
 export const Container = styled.div`
+  background-image: linear-gradient(to right, #e94b6e, #f66f4f);
   min-height: 600px;
   max-width: 400px;
   width: 100%;
@@ -44,4 +42,6 @@ export const Container = styled.div`
   align-items: center;
   border-radius: 20px;
   border: 2px solid #eb4b6d;
+  position: relative;
+  overflow: hidden;
 `;

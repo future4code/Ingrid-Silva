@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { Container, Image, Name, Title, ContentBox, Box } from "./styles";
+import { IconeTinder } from "../Home/styles";
+import Header from "../Header";
 
-function Matches() {
+function Matches(props) {
   const [matches, setMatches] = useState([]);
 
   const getMatches = () => {
@@ -10,7 +13,7 @@ function Matches() {
         "https://us-central1-missao-newton.cloudfunctions.net/astroMatch/ingrid/matches"
       )
       .then((res) => {
-        setMatches([...matches, ...res.data.matches]);
+        setMatches(res.data.matches);
       });
   };
 
@@ -19,16 +22,24 @@ function Matches() {
   }, []);
 
   const renderMatches = () => {
+    console.log(matches);
+
     return matches.map((match) => {
-      <p>{match.name}</p>;
+      return (
+        <ContentBox key={match.id}>
+          <Image src={match.photo} alt={match.name} />
+          <Name>{match.name}</Name>
+        </ContentBox>
+      );
     });
   };
 
   return (
-    <div>
-      <h1>Matches</h1>
-      {renderMatches()}
-    </div>
+    <Container>
+      <Header changePage={props.changePage} />
+      <Title>Matches</Title>
+      <Box>{renderMatches()}</Box>
+    </Container>
   );
 }
 
