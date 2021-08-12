@@ -3,9 +3,11 @@ import axios from "axios";
 
 import { Like, Dislike, Button, Container, BoxBtn } from "./styles";
 import CardProfile from "../CardProfile";
+import ItsAMatch from "../ItsAMatch";
 
 function Cards() {
   const [profile, setProfile] = useState({});
+  const [hasMatch, setHasMatch] = useState(false);
 
   const getProfile = () => {
     axios
@@ -37,7 +39,11 @@ function Cards() {
       )
       .then((response) => {
         getProfile();
-        // const isMatch = response.data.isMatch;
+        const isMatch = response.data.isMatch;
+
+        if (isMatch) {
+          setHasMatch(true);
+        }
       });
   };
 
@@ -64,8 +70,10 @@ function Cards() {
           </BoxBtn>
         </>
       ) : (
-        <p>Acabou-se</p>
+        <p>As opções de perfis esgotaram :(</p>
       )}
+
+      {hasMatch && <ItsAMatch />}
     </Container>
   );
 }
