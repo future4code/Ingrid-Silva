@@ -1,10 +1,11 @@
 import styled from "styled-components";
 import { SiTinder } from "react-icons/si";
-import { BsHeartFill } from "react-icons/bs";
+import { BsHeartFill, BsArrowRepeat } from "react-icons/bs";
 
 export const IconeTinder = styled(SiTinder)``;
 
 export const Matches = styled(BsHeartFill)``;
+export const Reset = styled(BsArrowRepeat)``;
 
 export const Container = styled.div`
   min-height: 600px;
