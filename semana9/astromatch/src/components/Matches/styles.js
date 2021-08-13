@@ -44,14 +44,14 @@ export const Box = styled.div`
     height: 3px;
   }
   ::-webkit-scrollbar-thumb {
-    background: #e94b6e6b;
+    background: #fff;
     border-radius: 0px;
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: #e94b6e6b;
+    background: #fff;
   }
   ::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 0px;
     box-shadow: inset 0px 0px 0px 0px #f0f0f0;
   }

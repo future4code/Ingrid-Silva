@@ -1,6 +1,7 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
-export const ImageContainer = styled.div`
+export const ImageContainer = styled(motion.div)`
   height: 500px;
   position: relative;
   width: 350px;
@@ -12,6 +13,7 @@ export const ImageContainer = styled.div`
 const BaseImage = styled.img`
   width: 100%;
   height: 100%;
+  -webkit-user-drag: none;
 `;
 
 export const ImageBlur = styled(BaseImage)`

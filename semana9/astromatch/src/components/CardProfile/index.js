@@ -11,18 +11,22 @@ import {
 
 function CardProfile(props) {
   return (
-    <div>
-      <ImageContainer>
-        <Image src={props.profile.photo} alt={props.profile.name}></Image>
-        <ImageBlur src={props.profile.photo} />
-        <TextContainer>
-          <NameAge>
-            {props.profile.name}, {props.profile.age}
-          </NameAge>
-          <Bio>{props.profile.bio}</Bio>
-        </TextContainer>
-      </ImageContainer>
-    </div>
+    <ImageContainer
+      drag="x"
+      dragElastic={0}
+      dragConstraints={{ left: -100, right: 100 }}
+      style={props.dragStyle}
+      onDragEnd={props.onDragEnd}
+    >
+      <Image src={props.profile.photo} alt={props.profile.name}></Image>
+      <ImageBlur src={props.profile.photo} />
+      <TextContainer>
+        <NameAge>
+          {props.profile.name}, {props.profile.age}
+        </NameAge>
+        <Bio>{props.profile.bio}</Bio>
+      </TextContainer>
+    </ImageContainer>
   );
 }
 
