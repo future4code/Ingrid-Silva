@@ -23,11 +23,11 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
-          <Route path="/adminhome" exact component={AdminHome} />
-          <Route path="/applicationform" exact component={ApplicationForm} />
+          <Route path="/admin/trips/create" exact component={AdminHome} />
+          <Route path="/trips/application" exact component={ApplicationForm} />
           <Route path="/createtrip" exact component={CreateTrip} />
-          <Route path="/trips" exact component={ListTrips} />
-          <Route path="/tripdetails" exact component={TripDetails} />
+          <Route path="/trips/list" exact component={ListTrips} />
+          <Route path="/admin/trips/id" exact component={TripDetails} />
         </Switch>
       </Main>
 
