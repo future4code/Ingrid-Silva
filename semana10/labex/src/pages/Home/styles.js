@@ -5,23 +5,22 @@ import Rocket from "../../img/rocket.jpg";
 export const Container = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
 `;
 
 export const Button = styled.button`
-  padding: 20px 40px;
+  padding: 15px 30px;
   border-radius: 5px;
+  border: 2px solid #1d3557;
   background-color: #1d3557;
   color: #f1faee;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
   cursor: pointer;
   display: flex;
   align-items: center;
-  transition: background-color 300ms ease;
-  font-weight: 700;
+  transition: background-color 300ms ease, color 300ms ease;
+  font-weight: 400;
 
   &:hover { 
-    background-color: #a8dadc;
+    background-color: #f1faee;
     color: #1d3557;
   }
 
@@ -35,27 +34,47 @@ export const AdminIcon = styled(BsPersonFill)``;
 export const TripIcon = styled(BsChevronRight)``;
 
 export const RocketContainer = styled.div`
-  align-items: center;
-  /* background: url(${Rocket}) center no-repeat; */
-  background-size: cover;
-  display: flex;
-  height: 300px;
+  flex-direction: column;
   padding: 15px;
-  justify-content: center;
-  margin-bottom: 30px;
+  max-width: 400px;
 
   > h1 {
-    font-family: "Paytone One", sans-serif;
-    font-size: 40px;
-    color: #e63946;
-    text-shadow: 0 0 15px rgba(255, 0, 0, 0.6);
-    text-align: center;
+    font-size: 50px;
+    color: #000;
+    line-height: 1.15;
+    /* text-shadow: 0 0 15px rgba(255, 0, 0, 0.6); */
+    /* text-align: center; */
+  }
+
+  > span {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 45px;
+    font-weight: 300;
   }
 `;
 
 export const ButtonContainer = styled.div`
-  display: flex;
+  /* display: flex;
   justify-content: center;
-  margin-bottom: 80px;
-  gap: 30px;
+  flex-direction: column;
+  gap: 15px; */
+
+  ${Button} + ${Button} {
+    margin-top: 15px;
+  }
 `;
+
+export const Illustration = styled.div`
+  background: url(${Rocket}) center no-repeat;
+  background-size: cover;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
+  height: 100%;
+  width: 50%;
+`;
+
+export const ContentContainer = styled.div`
+flex: 1;
+align-items: center;
+  justify-content: center;
+  display: flex;`;

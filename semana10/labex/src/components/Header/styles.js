@@ -8,7 +8,6 @@ export const Container = styled.div`
 `;
 
 export const Logo = styled.div`
-  font-family: "Paytone One", sans-serif;
   color: #e63946;
   font-size: 30px;
 `;

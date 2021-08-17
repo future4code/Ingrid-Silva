@@ -17,7 +17,7 @@ function App() {
     <Router>
       <GlobalStyle />
 
-      <Header />
+      {/* <Header /> */}
 
       <Main>
         <Switch>
@@ -31,7 +31,7 @@ function App() {
         </Switch>
       </Main>
 
-      <Footer />
+      {/* <Footer /> */}
     </Router>
   );
 }
@@ -40,9 +40,10 @@ export default App;
 
 const GlobalStyle = createGlobalStyle`
  * {
-   box-sizing: border-box;
-   padding: 0;
-   margin: 0;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  font-family: 'Heebo', sans-serif;
  }
 
  #root {

@@ -7,24 +7,32 @@ import {
   AdminIcon,
   RocketContainer,
   ButtonContainer,
+  Illustration,
+  ContentContainer,
 } from "./styles";
 
 const Home = () => {
   return (
     <Container>
-      <RocketContainer>
-        <h1>LabeX<br/>Viagens Espaciais</h1>
-      </RocketContainer>
-      <ButtonContainer>
-        <Button>
-          Ver viagens disponíveis
+      <ContentContainer>
+        <RocketContainer>
+          <h1>LabeX</h1>
+          <span>Viagens Espaciais</span>
+
+          <ButtonContainer>
+            <Button>
+              Ver viagens disponíveis
           <TripIcon />
-        </Button>
-        <Button>
-          Entrar como administrador
+            </Button>
+            <Button>
+              Entrar como administrador
           <AdminIcon />
-        </Button>
-      </ButtonContainer>
+            </Button>
+          </ButtonContainer>
+        </RocketContainer>
+      </ContentContainer>
+
+      <Illustration />
     </Container>
   );
 };
