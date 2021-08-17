@@ -1,25 +1,59 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Switch, Route, link } from "react-router-dom";
+
+import AdminHome from "./pages/AdminHome";
+import ApplicationForm from "./pages/ApplicationForm";
+import CreateTrip from "./pages/CreateTrip";
+import Home from "./pages/Home/Home";
+import ListTrips from "./pages/ListTrips";
+import Login from "./pages/Login";
+import TripDetails from "./pages/TripDetails";
+import Header from "./components/Header";
+import Footer from "./components/Footer";
+
+import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <GlobalStyle />
+
+      <Header />
+
+      <Main>
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/login" exact component={Login} />
+          <Route path="/adminhome" exact component={AdminHome} />
+          <Route path="/applicationform" exact component={ApplicationForm} />
+          <Route path="/createtrip" exact component={CreateTrip} />
+          <Route path="/trips" exact component={ListTrips} />
+          <Route path="/tripdetails" exact component={TripDetails} />
+        </Switch>
+      </Main>
+
+      <Footer />
+    </Router>
   );
 }
 
 export default App;
+
+const GlobalStyle = createGlobalStyle`
+ * {
+   box-sizing: border-box;
+   padding: 0;
+   margin: 0;
+ }
+
+ #root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+ }
+`;
+
+export const Main = styled.div`
+  background-color: #f1faee;
+  display: flex;
+  flex: 1;
+`;
