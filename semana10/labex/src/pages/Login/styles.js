@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-import { BsChevronLeft } from "react-icons/bs";
 import { Button } from "../Home/styles";
 
 export const Form = styled.form`

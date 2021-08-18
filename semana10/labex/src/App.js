@@ -8,14 +8,12 @@ import ListTrips from "./pages/ListTrips";
 import Login from "./pages/Login";
 import TripDetails from "./pages/TripDetails";
 
-
 import styled, { createGlobalStyle } from "styled-components";
 
 function App() {
   return (
     <Router>
       <GlobalStyle />
-
 
       <Main>
         <Switch>
@@ -28,7 +26,6 @@ function App() {
           <Route path="/admin/trips/id" exact component={TripDetails} />
         </Switch>
       </Main>
-
     </Router>
   );
 }

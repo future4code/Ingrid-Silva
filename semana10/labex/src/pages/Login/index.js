@@ -1,5 +1,7 @@
-import React from "react";
+import axios from "axios";
+import React, { useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
+import { useHistory } from "react-router-dom";
 import {
   AdminIcon,
   Button,
@@ -20,6 +22,44 @@ import {
 } from "./styles";
 
 const Login = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const history = useHistory();
+
+  const onChangeEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const onChangePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
+  const onSubmitLogin = () => {
+    console.log(email, password);
+    const body = {
+      email: email,
+      password: password,
+    };
+
+    const headers = {
+      "Content-Type": "application/json",
+    };
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/login",
+        body,
+        headers
+      )
+      .then((response) => {
+        console.log("Deu certo", response.data);
+        localStorage.setItem("token", response.data.token);
+        history.push("/admin/trips/id");
+      })
+      .catch((error) => {
+        console.log("Deu errado", error.response);
+      });
+  };
   return (
     <Container>
       <ContentContainer>
@@ -31,11 +71,19 @@ const Login = () => {
             <FormTitle>Digite seus dados</FormTitle>
             <FormGroup>
               <Label>E-mail</Label>
-              <Input placeholder="Digite seu e-mail" />
+              <Input
+                placeholder="Digite seu e-mail"
+                value={email}
+                onChange={onChangeEmail}
+              />
             </FormGroup>
             <FormGroup>
               <Label>Senha</Label>
-              <Input placeholder="Digite sua senha" />
+              <Input
+                placeholder="Digite sua senha"
+                value={password}
+                onChange={onChangePassword}
+              />
             </FormGroup>
           </Form>
 
@@ -44,7 +92,7 @@ const Login = () => {
               <BsChevronLeft />
               Voltar
             </BackButton>
-            <Button to="/admin/trips/create">
+            <Button onClick={onSubmitLogin}>
               Entrar
               <AdminIcon />
             </Button>
