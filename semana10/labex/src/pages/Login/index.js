@@ -36,7 +36,6 @@ const Login = () => {
   };
 
   const onSubmitLogin = () => {
-    console.log(email, password);
     const body = {
       email: email,
       password: password,
@@ -54,7 +53,7 @@ const Login = () => {
       .then((response) => {
         console.log("Deu certo", response.data);
         localStorage.setItem("token", response.data.token);
-        history.push("/admin/trips/id");
+        history.push("/admin/trips/create");
       })
       .catch((error) => {
         console.log("Deu errado", error.response);

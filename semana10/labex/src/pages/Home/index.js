@@ -14,7 +14,6 @@ import {
 } from "./styles";
 
 const Home = () => {
-
   return (
     <Container>
       <ContentContainer>
@@ -23,7 +22,7 @@ const Home = () => {
           <span>Viagens Espaciais</span>
 
           <ButtonContainer>
-            <Button to="/trips/list">
+            <Button to="/trips">
               Ver viagens disponíveis
               <TripIcon />
             </Button>

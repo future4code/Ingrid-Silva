@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 export const useProtectedPage = () => {
   const [isLogged, setIsLogged] = useState(false);
   const history = useHistory();
 
   useEffect(() => {
+    if (isLogged) return;
+
     const token = localStorage.getItem("token");
 
     if (token === null) {
@@ -14,19 +16,21 @@ export const useProtectedPage = () => {
     } else {
       setIsLogged(true);
     }
-  }, [history]);
+  }, [history, isLogged]);
 
   return { isLogged };
 };
 
-export default function TripDetails() {
+export default function TripDetails(props) {
+  const { id } = useParams();
+
   useProtectedPage();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
     axios
       .get(
-        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trip/NoIFVcOiSgTKTIPVZwXS",
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trip/${id}`,
         {
           headers: {
             auth: token,

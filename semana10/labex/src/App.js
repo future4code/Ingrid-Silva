@@ -9,8 +9,31 @@ import Login from "./pages/Login";
 import TripDetails from "./pages/TripDetails";
 
 import styled, { createGlobalStyle } from "styled-components";
+import { useCallback, useState } from "react";
+import axios from "axios";
 
 function App() {
+  const [trips, setTrips] = useState([]);
+
+  const getTrips = useCallback(() => {
+    axios
+      .get(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trips",
+        {
+          header: {
+            aluno: "ingrid",
+          },
+        }
+      )
+      .then((response) => {
+        console.log("foi", response.data);
+        setTrips(response.data.trips);
+      })
+      .catch((error) => {
+        console.log("não foi", error.response);
+      });
+  }, []);
+
   return (
     <Router>
       <GlobalStyle />
@@ -19,11 +42,24 @@ function App() {
         <Switch>
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
-          <Route path="/admin/trips/create" exact component={AdminHome} />
-          <Route path="/trips/application" exact component={ApplicationForm} />
+          <Route
+            path="/admin/trips/create"
+            exact
+            render={() => <AdminHome trips={trips} getTrips={getTrips} />}
+            trips={trips}
+          />
+          <Route
+            path="/trips/:id/application"
+            exact
+            render={() => <ApplicationForm trips={trips} />}
+          />
           <Route path="/createtrip" exact component={CreateTrip} />
-          <Route path="/trips/list" exact component={ListTrips} />
-          <Route path="/admin/trips/id" exact component={TripDetails} />
+          <Route
+            path="/trips"
+            exact
+            render={() => <ListTrips trips={trips} getTrips={getTrips} />}
+          />
+          <Route path="/admin/trips/:id" exact component={TripDetails} />
         </Switch>
       </Main>
     </Router>
