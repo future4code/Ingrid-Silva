@@ -3,12 +3,11 @@ import { BrowserRouter as Router, Switch, Route, link } from "react-router-dom";
 import AdminHome from "./pages/AdminHome";
 import ApplicationForm from "./pages/ApplicationForm";
 import CreateTrip from "./pages/CreateTrip";
-import Home from "./pages/Home/Home";
+import Home from "./pages/Home";
 import ListTrips from "./pages/ListTrips";
 import Login from "./pages/Login";
 import TripDetails from "./pages/TripDetails";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
+
 
 import styled, { createGlobalStyle } from "styled-components";
 
@@ -17,7 +16,6 @@ function App() {
     <Router>
       <GlobalStyle />
 
-      {/* <Header /> */}
 
       <Main>
         <Switch>
@@ -31,7 +29,6 @@ function App() {
         </Switch>
       </Main>
 
-      {/* <Footer /> */}
     </Router>
   );
 }

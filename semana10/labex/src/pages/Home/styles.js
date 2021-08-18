@@ -1,5 +1,6 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { BsPersonFill, BsChevronRight } from "react-icons/bs";
+import { Link } from "react-router-dom";
 import Rocket from "../../img/rocket.jpg";
 
 export const Container = styled.div`
@@ -7,19 +8,21 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const Button = styled.button`
+export const Button = styled(Link)`
   padding: 15px 30px;
   border-radius: 5px;
   border: 2px solid #1d3557;
   background-color: #1d3557;
   color: #f1faee;
   cursor: pointer;
+  font-size: 14px;
+  text-decoration: none;
   display: flex;
   align-items: center;
   transition: background-color 300ms ease, color 300ms ease;
   font-weight: 400;
 
-  &:hover { 
+  &:hover {
     background-color: #f1faee;
     color: #1d3557;
   }
@@ -37,13 +40,12 @@ export const RocketContainer = styled.div`
   flex-direction: column;
   padding: 15px;
   max-width: 400px;
+  width: 100%;
 
   > h1 {
     font-size: 50px;
     color: #000;
     line-height: 1.15;
-    /* text-shadow: 0 0 15px rgba(255, 0, 0, 0.6); */
-    /* text-align: center; */
   }
 
   > span {
@@ -55,17 +57,27 @@ export const RocketContainer = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  /* display: flex;
-  justify-content: center;
+  align-items: flex-start;
+  display: flex;
   flex-direction: column;
-  gap: 15px; */
 
   ${Button} + ${Button} {
     margin-top: 15px;
   }
 `;
 
+const pulseAnimation = keyframes`
+  0% {
+    background-size: auto 100%;
+  }
+
+  100% {
+    background-size: auto 105%;
+  }
+`;
+
 export const Illustration = styled.div`
+  animation: ${pulseAnimation} 6s ease-in-out infinite alternate-reverse;
   background: url(${Rocket}) center no-repeat;
   background-size: cover;
   clip-path: polygon(0 0, 100% 0, 100% 100%, 25% 100%);
@@ -74,7 +86,8 @@ export const Illustration = styled.div`
 `;
 
 export const ContentContainer = styled.div`
-flex: 1;
-align-items: center;
+  flex: 1;
+  align-items: center;
   justify-content: center;
-  display: flex;`;
+  display: flex;
+`;
