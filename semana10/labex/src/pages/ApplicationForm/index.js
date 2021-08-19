@@ -155,7 +155,7 @@ export default function ApplicationForm(props) {
           </select>
         </FormGroup>
         <ButtonContainer>
-          <BackButton to={"/trips"}>
+          <BackButton to="/trips">
             <BsChevronLeft />
             Voltar
           </BackButton>

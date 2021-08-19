@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { useHistory } from "react-router-dom";
 import {
@@ -10,6 +10,7 @@ import {
   Illustration,
   RocketContainer,
 } from "../Home/styles";
+import { useProtectedPage } from "../TripDetails";
 
 import {
   Form,
@@ -25,7 +26,16 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const { isLogged } = useProtectedPage();
   const history = useHistory();
+
+  useEffect(() => {
+    if (isLogged) {
+      history.push("/admin/trips");
+    }
+  }, [history, isLogged]);
+
+  if (isLogged) return null;
 
   const onChangeEmail = (event) => {
     setEmail(event.target.value);
@@ -53,7 +63,7 @@ const Login = () => {
       .then((response) => {
         console.log("Deu certo", response.data);
         localStorage.setItem("token", response.data.token);
-        history.push("/admin/trips/create");
+        history.push("/admin/trips");
       })
       .catch((error) => {
         console.log("Deu errado", error.response);

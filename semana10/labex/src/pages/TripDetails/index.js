@@ -18,7 +18,12 @@ export const useProtectedPage = () => {
     }
   }, [history, isLogged]);
 
-  return { isLogged };
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsLogged(false);
+  };
+
+  return { isLogged, logout };
 };
 
 export default function TripDetails(props) {

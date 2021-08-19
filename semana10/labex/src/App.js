@@ -15,6 +15,39 @@ import axios from "axios";
 function App() {
   const [trips, setTrips] = useState([]);
 
+  const createTrip = () => {
+    const token = localStorage.getItem("token");
+
+    axios.post(
+      "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trips",
+      {
+        headers: {
+          "Content-Type": "application/json",
+          auth: token,
+        },
+      }
+    );
+  };
+
+  const deleteTrip = (id) => {
+    const token = localStorage.getItem("token");
+
+    axios
+      .delete(
+        `https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trips/${id}`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            auth: token,
+          },
+        }
+      )
+      .then(() => {
+        setTrips(trips.filter((trip) => id !== trip.id));
+      })
+      .catch(() => alert("Erro ao deletar..."));
+  };
+
   const getTrips = useCallback(() => {
     axios
       .get(
@@ -43,23 +76,33 @@ function App() {
           <Route path="/" exact component={Home} />
           <Route path="/login" exact component={Login} />
           <Route
-            path="/admin/trips/create"
+            path="/admin/trips"
             exact
-            render={() => <AdminHome trips={trips} getTrips={getTrips} />}
+            render={() => (
+              <AdminHome
+                trips={trips}
+                getTrips={getTrips}
+                deleteTrip={deleteTrip}
+              />
+            )}
             trips={trips}
+          />
+          <Route path="/admin/trips/:id" exact component={TripDetails} />
+          <Route
+            path="/trips"
+            exact
+            render={() => <ListTrips trips={trips} getTrips={getTrips} />}
           />
           <Route
             path="/trips/:id/application"
             exact
             render={() => <ApplicationForm trips={trips} />}
           />
-          <Route path="/createtrip" exact component={CreateTrip} />
           <Route
-            path="/trips"
+            path="/createtrip"
             exact
-            render={() => <ListTrips trips={trips} getTrips={getTrips} />}
+            render={() => <CreateTrip createTrip={createTrip} />}
           />
-          <Route path="/admin/trips/:id" exact component={TripDetails} />
         </Switch>
       </Main>
     </Router>
