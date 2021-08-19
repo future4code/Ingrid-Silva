@@ -27,6 +27,7 @@ export const FormGroup = styled.div`
 export const ButtonContainer = styled.div`
   display: flex;
   gap: 15px;
+  margin-top: 30px;
 `;
 
 export const BackButton = styled(Button)`

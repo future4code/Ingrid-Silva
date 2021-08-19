@@ -1,7 +1,8 @@
 import styled from "styled-components";
 import { ButtonContainer } from "../Login/styles";
 
-import { BsTrash } from "react-icons/bs";
+import { BsTrash, BsPlus } from "react-icons/bs";
+import { Button } from "../Home/styles";
 
 export const Container = styled.div`
   display: flex;
@@ -26,25 +27,49 @@ export const TripCard = styled.div`
   margin-bottom: 15px;
   color: #f1faee;
   box-shadow: rgb(0 0 0 / 30%) 0px 4px 8px 0px;
-  cursor: pointer;
-  width: 600px;
   transition: background-color 300ms ease, color 300ms ease;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+
+  ${Button} {
+    padding: 0;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #f1faee;
+    transition: color 300ms ease;
+    margin-right: 60px;
+    display: flex;
+    align-items: center;
+
+    svg {
+      font-size: 20px;
+    }
+  }
 
   &:hover {
     background-color: #f1faee;
     color: #1d3557;
+
+    ${Button} {
+      color: #1d3557;
+    }
   }
 `;
 
-export const TripsContainer = styled.div``;
-export const TripName = styled.p`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+export const TripsContainer = styled.div`
+  max-width: 600px;
+  width: 100%; ;
 `;
+export const TripName = styled.p``;
 export const Trash = styled(BsTrash)`
+  cursor: pointer;
   &:hover {
     transform: scale(150%);
     stroke: #1d3557;
   }
 `;
+
+export const Plus = styled(BsPlus)``;

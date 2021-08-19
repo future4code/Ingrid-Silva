@@ -76,7 +76,7 @@ export default function ApplicationForm(props) {
         }
       )
       .then(() => {
-        alert(`Parabéns! Você se inscreveu para a viagem ${trip.name}`);
+        alert(`Parabéns! Você se inscreveu para a viagem!`);
       })
       .catch((error) => {
         console.log("não deu", error);
@@ -95,14 +95,16 @@ export default function ApplicationForm(props) {
 
   return (
     <Container>
-      <Title>
-        <small>Inscrição para a viagem</small> {trip.name}
-      </Title>
+      <Title>Inscrição para a viagem</Title>
 
       <Form onSubmit={handleFormSubmit}>
         <FormGroup>
-          <Label>Nome</Label>
+          <Label forHtml="name">Nome</Label>
           <Input
+            id="name"
+            type="text"
+            minLength="3"
+            required
             name="name"
             value={userInformation.name}
             placeholder="Digite o seu nome"
@@ -110,9 +112,11 @@ export default function ApplicationForm(props) {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Idade</Label>
+          <Label forHtml="age">Idade</Label>
           <Input
-            min="1"
+            id="age"
+            required
+            min="18"
             name="age"
             type="number"
             value={userInformation.age}
@@ -121,8 +125,12 @@ export default function ApplicationForm(props) {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Texto de candidatura</Label>
+          <Label forHtml="text">Texto de candidatura</Label>
           <Input
+            id="text"
+            required
+            type="text"
+            minLength="10"
             as="textarea"
             placeholder="Conte para nós por que gostaria de participar dessa viagem"
             name="applicationText"
@@ -131,8 +139,11 @@ export default function ApplicationForm(props) {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Profissão</Label>
+          <Label forHtml="profession">Profissão</Label>
           <Input
+            id="profession"
+            type="text"
+            required
             placeholder="Qual é a sua profissão?"
             name="profession"
             value={userInformation.profession}
@@ -142,6 +153,7 @@ export default function ApplicationForm(props) {
         <FormGroup>
           <Label>Escolha um país</Label>
           <select
+            required
             name="country"
             value={userInformation.country}
             onChange={handleInputChange}

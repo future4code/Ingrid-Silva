@@ -2,7 +2,14 @@ import React, { useEffect } from "react";
 import { Button } from "../Home/styles";
 import { BackButton, ButtonContainer } from "../Login/styles";
 
-import { Container, TripCard, TripsContainer, TripName, Trash } from "./styles";
+import {
+  Container,
+  TripCard,
+  TripsContainer,
+  TripName,
+  Trash,
+  Plus,
+} from "./styles";
 
 import { useProtectedPage } from "../TripDetails/index";
 
@@ -19,10 +26,14 @@ const AdminHome = ({ trips, getTrips, deleteTrip }) => {
     trips.map((trip) => {
       return (
         <TripCard key={trip.id}>
-          <TripName>
-            {trip.name}
+          <TripName>{trip.name}</TripName>
+          <div style={{ display: "flex" }}>
+            <Button to={`/admin/trips/${trip.id}`}>
+              <Plus />
+              Detalhes
+            </Button>
             <Trash onClick={() => deleteTrip(trip.id)} />
-          </TripName>
+          </div>
         </TripCard>
       );
     });

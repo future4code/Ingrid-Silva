@@ -45,7 +45,8 @@ const Login = () => {
     setPassword(event.target.value);
   };
 
-  const onSubmitLogin = () => {
+  const onSubmitLogin = (e) => {
+    e.preventDefault();
     const body = {
       email: email,
       password: password,
@@ -66,6 +67,7 @@ const Login = () => {
         history.push("/admin/trips");
       })
       .catch((error) => {
+        alert(error.response.data.message);
         console.log("Deu errado", error.response);
       });
   };
@@ -75,37 +77,42 @@ const Login = () => {
         <RocketContainer>
           <h1>LabeX</h1>
           <span>Viagens Espaciais</span>
-
-          <Form>
+          <Form onSubmit={onSubmitLogin}>
             <FormTitle>Digite seus dados</FormTitle>
             <FormGroup>
-              <Label>E-mail</Label>
+              <Label forHtml="email">E-mail</Label>
               <Input
+                id="email"
+                type="email"
+                required
                 placeholder="Digite seu e-mail"
                 value={email}
                 onChange={onChangeEmail}
               />
             </FormGroup>
             <FormGroup>
-              <Label>Senha</Label>
+              <Label forHtml="senha">Senha</Label>
               <Input
+                id="senha"
+                type="password"
+                required
                 placeholder="Digite sua senha"
                 value={password}
                 onChange={onChangePassword}
               />
             </FormGroup>
-          </Form>
 
-          <ButtonContainer>
-            <BackButton to="/">
-              <BsChevronLeft />
-              Voltar
-            </BackButton>
-            <Button onClick={onSubmitLogin}>
-              Entrar
-              <AdminIcon />
-            </Button>
-          </ButtonContainer>
+            <ButtonContainer>
+              <BackButton to="/">
+                <BsChevronLeft />
+                Voltar
+              </BackButton>
+              <Button as="button">
+                Entrar
+                <AdminIcon />
+              </Button>
+            </ButtonContainer>
+          </Form>
         </RocketContainer>
       </ContentContainer>
 

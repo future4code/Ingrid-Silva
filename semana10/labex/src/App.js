@@ -1,4 +1,10 @@
-import { BrowserRouter as Router, Switch, Route, link } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  link,
+  useHistory,
+} from "react-router-dom";
 
 import AdminHome from "./pages/AdminHome";
 import ApplicationForm from "./pages/ApplicationForm";
@@ -18,15 +24,17 @@ function App() {
   const createTrip = () => {
     const token = localStorage.getItem("token");
 
-    axios.post(
-      "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trips",
-      {
-        headers: {
-          "Content-Type": "application/json",
-          auth: token,
-        },
-      }
-    );
+    axios
+      .post(
+        "https://us-central1-labenu-apis.cloudfunctions.net/labeX/ingrid/trips",
+        {
+          headers: {
+            "Content-Type": "application/json",
+            auth: token,
+          },
+        }
+      )
+      .then(() => {});
   };
 
   const deleteTrip = (id) => {
@@ -44,6 +52,7 @@ function App() {
       )
       .then(() => {
         setTrips(trips.filter((trip) => id !== trip.id));
+        alert("Viagem deletada com sucesso");
       })
       .catch(() => alert("Erro ao deletar..."));
   };
@@ -87,7 +96,11 @@ function App() {
             )}
             trips={trips}
           />
-          <Route path="/admin/trips/:id" exact component={TripDetails} />
+          <Route
+            path="/admin/trips/:id"
+            exact
+            render={() => <TripDetails trips={trips} />}
+          />
           <Route
             path="/trips"
             exact

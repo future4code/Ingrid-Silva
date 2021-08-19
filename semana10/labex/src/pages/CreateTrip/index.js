@@ -17,6 +17,7 @@ import { useProtectedPage } from "../TripDetails";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { useHistory } from "react-router-dom";
 
 const INITIAL_FORM_DATA = {
   name: "",
@@ -27,6 +28,8 @@ const INITIAL_FORM_DATA = {
 };
 
 export default function CreateTrip() {
+  const history = useHistory();
+
   const { isLogged } = useProtectedPage();
 
   const [tripInformation, setTripInformation] = useState({
@@ -69,7 +72,10 @@ export default function CreateTrip() {
           },
         }
       )
-      .then(() => alert("Nova Trip criada!"))
+      .then(() => {
+        alert("Nova Trip criada!");
+        history.push("/admin/trips");
+      })
       .catch((error) => {
         console.log(error.response);
         alert("Não deu!");
@@ -83,8 +89,10 @@ export default function CreateTrip() {
       <Title>Criar nova viagem</Title>
       <Form onSubmit={handleTripSubmit}>
         <FormGroup>
-          <Label>Título da viagem</Label>
+          <Label forHtml="title">Título da viagem</Label>
           <Input
+            id="title"
+            required
             placeholder="Digite o título da viagem"
             name="name"
             value={tripInformation.name}
@@ -92,9 +100,11 @@ export default function CreateTrip() {
           />
         </FormGroup>
         <FormGroup>
-          <Label>Destino</Label>
+          <Label forHtml="destination">Destino</Label>
 
           <select
+            id="destination"
+            required
             name="planet"
             value={tripInformation.planet}
             onChange={handleInputChange}
@@ -113,22 +123,28 @@ export default function CreateTrip() {
         <FormGroup>
           <Label>Data</Label>
           <DatePicker
+            required
             selected={tripInformation.date}
             onChange={handleDateChange}
             name="date"
           />
         </FormGroup>
         <FormGroup>
-          <Label>Descrição</Label>
+          <Label forHtml="description">Descrição</Label>
           <Input
+            id="description"
+            required
             name="description"
             value={tripInformation.description}
             onChange={handleInputChange}
           />
         </FormGroup>
         <FormGroup>
-          <Label>Duração em dias</Label>
+          <Label forHtml="duration">Duração em dias</Label>
           <Input
+            id="duration"
+            required
+            type="number"
             name="durationInDays"
             value={tripInformation.durationInDays}
             onChange={handleNumberInputChange}
