@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
 
   body {
     background-color: #dae0e6;
+    padding: 30px;
   }
 `;
 

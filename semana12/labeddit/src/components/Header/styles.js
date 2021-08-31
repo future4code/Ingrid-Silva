@@ -6,6 +6,7 @@ import {
   AiOutlineDown,
   AiOutlineSearch,
 } from "react-icons/ai";
+import Button from "../Button";
 
 export const Container = styled.header`
   position: fixed;
@@ -14,6 +15,8 @@ export const Container = styled.header`
   height: 48px;
   width: 100%;
   display: flex;
+  top: 0;
+  left: 0;
 
   @media (min-width: 617px) {
     justify-content: space-between;
@@ -97,4 +100,8 @@ export const ArrowDown = styled(AiOutlineDown)`
   @media (min-width: 617px) {
     display: none;
   }
+`;
+
+export const Buttonlink = styled(Button)`
+  text-decoration: none;
 `;

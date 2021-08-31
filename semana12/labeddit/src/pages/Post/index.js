@@ -6,8 +6,10 @@ import {
   Container,
   CommentsContainer,
   WriteCommentContainer,
+  Line,
   Write,
   Button,
+  ButtonContainer,
 } from "./styles";
 
 function Post() {
@@ -16,12 +18,22 @@ function Post() {
       <CardPost />
 
       <WriteCommentContainer>
-        <Write />
-
-        <Button>Comentar</Button>
+        <Write type="textarea" placeholder="Criar post" />
+        <ButtonContainer>
+          <Button>Comentar</Button>
+        </ButtonContainer>
       </WriteCommentContainer>
 
+      <Line />
+
       <CommentsContainer>
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
+        <CommentCard />
         <CommentCard />
       </CommentsContainer>
     </Container>

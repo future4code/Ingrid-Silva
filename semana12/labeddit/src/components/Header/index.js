@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Logo from "../../assests/logo-reddit.svg";
 import Button from "../Button";
 
@@ -28,8 +29,12 @@ function Header() {
       </InputContainer>
 
       <Menu>
-        <Button variant="outlined">Entrar</Button>
-        <Button>Cadastre-se</Button>
+        <Button variant="outlined" as={Link} to="/">
+          Entrar
+        </Button>
+        <Button as={Link} to="/">
+          Cadastre-se
+        </Button>
 
         <User />
         <ArrowDown />

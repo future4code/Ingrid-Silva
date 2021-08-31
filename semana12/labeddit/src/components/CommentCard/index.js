@@ -8,17 +8,25 @@ import {
   Down,
   ArrowContainer,
   Button,
+  Username,
+  Info,
 } from "./styles";
 
 function CommentCard() {
   return (
     <Container>
-      <Date>2021-05-28T12:59:24.633Z</Date>
+      <Info>
+        <Username>Ingrid da Silva · </Username>
+        <Date>8h</Date>
+      </Info>
+
       <Comment>She's a triflin' friend indeed</Comment>
+
       <ArrowContainer>
         <Button>
           <Up />
         </Button>
+        <p>12</p>
         <Button>
           <Down />
         </Button>
