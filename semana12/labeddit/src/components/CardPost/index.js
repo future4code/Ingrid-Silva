@@ -11,8 +11,10 @@ import {
   IconsContainer,
   Up,
   Down,
+  Username,
 } from "./styles";
-function CardPost() {
+
+function CardPost({ title, username, body, comments }) {
   return (
     <Container>
       <IconsContainer>
@@ -24,22 +26,13 @@ function CardPost() {
         </button>
       </IconsContainer>
       <MainContent>
-        <Title>
-          John, a wealthy 60 year old man, shows up at the country club one day
-          with his new wife, a smoking hot 22 year old blonde.
-        </Title>
-        <PostContent>
-          His buddies are amazed. "There is no way someone that young and
-          attractive would agree to marry an old geezer like you. How did you
-          pull it off?" "It's simple," John says, "I lied to her about my age."
-          "Did you tell her you were 50?" his friends ask. John shakes his head
-          no. "There is no way she could believe you were 40". John shakes his
-          head again. "So how old did you tell her you were exactly??" John
-          smiles and says "85".
-        </PostContent>
+        <Title>{title}</Title>
+        <Username>{username}</Username>
+        {/* <Date></Date> */}
+        <PostContent>{body}</PostContent>
         <CommentsContainer>
           <CommentIcon />
-          <Comments>19 comentários</Comments>
+          <Comments>{comments} comentários</Comments>
         </CommentsContainer>
       </MainContent>
     </Container>

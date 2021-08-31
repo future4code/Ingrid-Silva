@@ -1,5 +1,8 @@
 import React from "react";
 import LoginButton from "../../components/LoginButton";
+import { useForm, useUnprotectedPage } from "../../utils/hooks";
+import { register } from "../../services/auth";
+
 import {
   Container,
   Description,
@@ -13,6 +16,31 @@ import {
 } from "../Login/styles";
 
 function Register() {
+  useUnprotectedPage();
+  const [fields, setFields, clear] = useForm({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleRegister = async (event) => {
+    event.preventDefault();
+
+    const body = {
+      username: fields.username,
+      email: fields.email,
+      password: fields.password,
+    };
+
+    try {
+      const { data } = await register(body);
+      console.log("Deu certo", data);
+      clear();
+    } catch (e) {
+      console.log("Não deu certo", { ...e });
+    }
+  };
+
   return (
     <Container>
       <RightSide />
@@ -23,15 +51,33 @@ function Register() {
           Ao continuar, você concorda com nossos Termos de Uso e nossa Política
           de Privacidade.
         </Description>
-        <InputContainer>
+        <InputContainer onSubmit={handleRegister}>
           <Label>NOME DE USUÁRIO</Label>
-          <Input type="text" required />
+          <Input
+            type="text"
+            name="username"
+            value={fields.username}
+            onChange={setFields}
+            required
+          />
           <Label>EMAIL</Label>
-          <Input type="text" required />
+          <Input
+            type="email"
+            name="email"
+            value={fields.email}
+            onChange={setFields}
+            required
+          />
           <Label>SENHA</Label>
-          <Input type="password" required />
+          <Input
+            type="password"
+            name="password"
+            value={fields.password}
+            onChange={setFields}
+            required
+          />
 
-          <LoginButton>Entrar</LoginButton>
+          <LoginButton>Cadastrar</LoginButton>
         </InputContainer>
 
         <Message>

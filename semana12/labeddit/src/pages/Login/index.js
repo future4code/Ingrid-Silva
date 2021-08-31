@@ -1,5 +1,6 @@
 import React from "react";
 import LoginButton from "../../components/LoginButton";
+import { useForm, useUnprotectedPage } from "../../utils/hooks";
 
 import {
   Container,
@@ -12,8 +13,41 @@ import {
   Input,
   Message,
 } from "./styles";
+import { login } from "../../services/auth";
+import { useHistory } from "react-router-dom";
 
 function Login() {
+  useUnprotectedPage();
+  const history = useHistory();
+  const [fields, setFields, clear] = useForm({
+    email: "",
+    password: "",
+  });
+
+  const goToFeed = () => {
+    history.push("/feed");
+  };
+
+  const handleLogin = async (event) => {
+    event.preventDefault();
+
+    const body = {
+      email: fields.email,
+      password: fields.password,
+    };
+
+    try {
+      const { data } = await login(body);
+      localStorage.setItem("token", data.token);
+      goToFeed();
+      console.log("Deu certo", data);
+      clear();
+    } catch (e) {
+      console.log("Não deu certo", { ...e });
+      alert("Erro no login");
+    }
+  };
+
   return (
     <Container>
       <RightSide />
@@ -24,14 +58,25 @@ function Login() {
           Ao continuar, você concorda com nossos Termos de Uso e nossa Política
           de Privacidade.
         </Description>
-        <InputContainer>
-          <Label>NOME DE USUÁRIO</Label>
-          <Input type="text" required />
+        <InputContainer onSubmit={handleLogin}>
+          <Label>E-MAIL</Label>
+          <Input
+            type="email"
+            name="email"
+            value={fields.email}
+            onChange={setFields}
+            required
+          />
           <Label>SENHA</Label>
 
-          <Input type="password" required />
-
-          <LoginButton>Entrar</LoginButton>
+          <Input
+            name="password"
+            type="password"
+            value={fields.password}
+            onChange={setFields}
+            required
+          />
+          <LoginButton type="submit">Entrar</LoginButton>
         </InputContainer>
 
         <Message>

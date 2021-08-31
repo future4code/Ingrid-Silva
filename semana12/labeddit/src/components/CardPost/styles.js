@@ -58,3 +58,8 @@ export const Down = styled(AiFillDownCircle)`
     color: #7193ff;
   }
 `;
+
+export const Username = styled.p`
+  font-size: 14px;
+  margin-bottom: 10px;
+`;

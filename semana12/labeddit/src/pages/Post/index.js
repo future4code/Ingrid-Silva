@@ -1,6 +1,7 @@
 import React from "react";
 import CardPost from "../../components/CardPost";
 import CommentCard from "../../components/CommentCard";
+import { useProtectedPage } from "../../utils/hooks";
 
 import {
   Container,
@@ -13,6 +14,8 @@ import {
 } from "./styles";
 
 function Post() {
+  useProtectedPage();
+
   return (
     <Container>
       <CardPost />

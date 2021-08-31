@@ -1,12 +1,13 @@
 import { createGlobalStyle } from "styled-components";
 import Router from "./routes/Router";
+import PostsProvider from "./store/PostsProvider";
 
 function App() {
   return (
-    <>
+    <PostsProvider>
       <GlobalStyle />
       <Router />
-    </>
+    </PostsProvider>
   );
 }
 
