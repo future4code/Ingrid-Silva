@@ -12,14 +12,14 @@ export const CommentsContainer = styled.div``;
 export const WriteCommentContainer = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 30px;
+  padding: 10px 20px;
   width: 100%;
   background-color: #fff;
+  border-radius: 4px;
 `;
 export const Write = styled.textarea`
   border: 1px solid #dae0e6;
   border-radius: 4px;
-  min-height: 122px;
   white-space: pre-wrap;
   overflow-wrap: break-word;
   padding: 8px 16px;
@@ -45,8 +45,4 @@ export const Button = styled.button`
     background-color: rgba(125, 124, 124, 0.96);
     color: #c6c6c6;
   }
-`;
-
-export const Line = styled.div`
-  background-color: #eceff2;
 `;

@@ -1,17 +1,27 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {
   AiOutlineComment,
   AiFillUpCircle,
   AiFillDownCircle,
 } from "react-icons/ai";
 
-export const Container = styled.main`
+export const Container = styled.section`
   background-color: #fff;
-  border-top-left-radius: 4px;
-  border-top-right-radius: 4px;
+  border: 1px solid #fff;
+  border-radius: 4px;
   padding: 30px;
   margin-bottom: 15px;
   display: flex;
+  transition: border-color 100ms ease;
+
+  ${({ onClick }) =>
+    !!onClick &&
+    css`
+      &:hover {
+        border-color: #8d8d8d;
+        cursor: pointer;
+      }
+    `}
 `;
 export const Title = styled.h3`
   margin-bottom: 15px;

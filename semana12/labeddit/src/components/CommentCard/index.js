@@ -1,32 +1,16 @@
 import React from "react";
 
-import {
-  Container,
-  Date,
-  Comment,
-  Up,
-  Down,
-  ArrowContainer,
-  Button,
-  Username,
-  Info,
-} from "./styles";
+import { Container, Comment, Up, Down, ArrowContainer, Button } from "./styles";
 
-function CommentCard() {
+function CommentCard({ body }) {
   return (
     <Container>
-      <Info>
-        <Username>Ingrid da Silva · </Username>
-        <Date>8h</Date>
-      </Info>
-
-      <Comment>She's a triflin' friend indeed</Comment>
+      <Comment>{body}</Comment>
 
       <ArrowContainer>
         <Button>
           <Up />
         </Button>
-        <p>12</p>
         <Button>
           <Down />
         </Button>

@@ -1,6 +1,7 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardPost from "../../components/CardPost";
 import Header from "../../components/Header";
+import PostModal from "../../components/PostModal";
 import PostsContext from "../../store/posts-context";
 import { useProtectedPage } from "../../utils/hooks";
 import {
@@ -16,6 +17,7 @@ import { Posts } from "./styles";
 function Feed() {
   useProtectedPage();
 
+  const [selectedPost, setSelectedPost] = useState();
   const { posts, fetchPosts } = useContext(PostsContext);
 
   useEffect(() => {
@@ -25,6 +27,7 @@ function Feed() {
   const renderPosts = () => {
     return posts.map((post) => (
       <CardPost
+        onClick={() => setSelectedPost(post.id)}
         title={post.title}
         username={post.username}
         body={post.body}
@@ -37,8 +40,13 @@ function Feed() {
     <>
       <Header />
       <Container>
+        <PostModal
+          onClose={() => setSelectedPost(undefined)}
+          selectedPost={selectedPost}
+        />
+
         <WriteCommentContainer>
-          <Write type="textarea" placeholder="No que está pensando?" />
+          <Write type="textarea" placeholder="Postar" />
           <ButtonContainer>
             <Button>Postar</Button>
           </ButtonContainer>

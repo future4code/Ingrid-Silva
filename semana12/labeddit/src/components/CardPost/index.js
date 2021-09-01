@@ -14,9 +14,16 @@ import {
   Username,
 } from "./styles";
 
-function CardPost({ title, username, body, comments }) {
+function CardPost({
+  title,
+  username,
+  body,
+  comments,
+  onClick,
+  showComments = true,
+}) {
   return (
-    <Container>
+    <Container onClick={onClick}>
       <IconsContainer>
         <button>
           <Up />
@@ -28,12 +35,13 @@ function CardPost({ title, username, body, comments }) {
       <MainContent>
         <Title>{title}</Title>
         <Username>{username}</Username>
-        {/* <Date></Date> */}
         <PostContent>{body}</PostContent>
-        <CommentsContainer>
-          <CommentIcon />
-          <Comments>{comments} comentários</Comments>
-        </CommentsContainer>
+        {showComments && (
+          <CommentsContainer>
+            <CommentIcon />
+            <Comments>{comments || 0} comentários</Comments>
+          </CommentsContainer>
+        )}
       </MainContent>
     </Container>
   );

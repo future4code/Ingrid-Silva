@@ -3,7 +3,7 @@ import { AiFillUpCircle, AiFillDownCircle } from "react-icons/ai";
 
 export const Container = styled.div`
   background-color: #fff;
-  padding: 15px 30px;
+  padding: 10px 20px;
 `;
 
 export const Username = styled.p`
