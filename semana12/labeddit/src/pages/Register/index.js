@@ -14,6 +14,7 @@ import {
   RightSide,
   Title,
 } from "../Login/styles";
+import { Link } from "react-router-dom";
 
 function Register() {
   useUnprotectedPage();
@@ -81,7 +82,7 @@ function Register() {
         </InputContainer>
 
         <Message>
-          Já está no LabEddit? <a href="/">ENTRAR</a>
+          Já está no LabEddit? <Link to="/">ENTRAR</Link>
         </Message>
       </LeftSide>
     </Container>

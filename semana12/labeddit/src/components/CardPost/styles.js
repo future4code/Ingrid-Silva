@@ -62,24 +62,31 @@ export const IconsContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-
-  button {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
 `;
-export const Up = styled(AiFillUpCircle)`
-  font-size: 25px;
 
-  &:hover {
+const VoteButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-size: 25px;
+`;
+
+export const UpVoteButton = styled(VoteButton)`
+  color: ${({ active }) => (active ? "#ef4e17" : "#000")};
+
+  :hover {
     color: #ef4e17;
   }
 `;
-export const Down = styled(AiFillDownCircle)`
-  font-size: 25px;
 
-  &:hover {
+export const DownVoteButton = styled(VoteButton)`
+  color: ${({ active }) => (active ? "#7193ff" : "#000")};
+
+  :hover {
     color: #7193ff;
   }
 `;
+
+export const Up = styled(AiFillUpCircle)``;
+
+export const Down = styled(AiFillDownCircle)``;

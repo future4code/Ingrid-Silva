@@ -16,6 +16,7 @@ import {
 
 function Post({ id, showComments }) {
   const [comments, setComments] = useState([]);
+
   useProtectedPage();
 
   const { posts } = useContext(PostsContext);
@@ -23,8 +24,6 @@ function Post({ id, showComments }) {
   const post = posts.find((post) => post.id === id);
 
   const fetchComments = useCallback(async () => {
-    console.log({ id });
-
     if (!id) return;
 
     try {
@@ -60,9 +59,34 @@ function Post({ id, showComments }) {
     }
   };
 
+  const changeCommentVote = useCallback(
+    (id, userVote) => {
+      console.log({ comments });
+
+      const updatedComments = comments.map((comment) =>
+        comment.id === id
+          ? {
+              ...comment,
+              userVote,
+            }
+          : comment
+      );
+
+      setComments(updatedComments);
+    },
+    [comments]
+  );
+
   const renderComments = () => {
     return comments.map((comment) => (
-      <CommentCard createdAt={comment.createdAt} body={comment.body} />
+      <CommentCard
+        changeCommentVote={changeCommentVote}
+        userVote={comment.userVote}
+        fetchComments={fetchComments}
+        createdAt={comment.createdAt}
+        body={comment.body}
+        id={comment.id}
+      />
     ));
   };
 
@@ -71,11 +95,14 @@ function Post({ id, showComments }) {
   return (
     <Container>
       <CardPost
+        id={post.id}
         body={post.body}
         title={post.title}
         username={post.username}
         showComments={showComments}
         createdAt={post.createdAt}
+        userVote={post.userVote}
+        fetchComments={fetchComments}
       />
 
       <WriteCommentContainer onSubmit={handleCreateComment}>

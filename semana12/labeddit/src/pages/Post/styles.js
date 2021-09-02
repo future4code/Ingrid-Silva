@@ -6,7 +6,8 @@ export const Container = styled.main`
   justify-content: center;
   width: 100%;
   margin: 40px auto;
-  max-width: 600px;
+  max-width: 630px;
+  padding: 0 15px;
 `;
 export const CommentsContainer = styled.div``;
 export const WriteCommentContainer = styled.form`

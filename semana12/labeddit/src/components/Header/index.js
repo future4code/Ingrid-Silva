@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
 import Logo from "../../assets/logo-reddit.svg";
 import Button from "../Button";
+import DropdownMenu from "../DropdownMenu";
 
 import {
   Container,
@@ -17,6 +17,12 @@ import {
 } from "./styles";
 
 function Header({ onLogout }) {
+  const [showDropdownMenu, setShowDropdownMenu] = useState(false);
+
+  const handleShowDropdownMenu = () => {
+    setShowDropdownMenu((prev) => !prev);
+  };
+
   return (
     <Container>
       <RedditWebLogo src={Logo} />
@@ -33,8 +39,14 @@ function Header({ onLogout }) {
           Sair
         </Button>
 
-        <User />
-        <ArrowDown />
+        <div style={{ position: "relative" }}>
+          <button onClick={handleShowDropdownMenu}>
+            <User />
+            <ArrowDown />
+          </button>
+
+          {showDropdownMenu && <DropdownMenu />}
+        </div>
       </Menu>
     </Container>
   );

@@ -17,7 +17,7 @@ function Feed() {
   const { logout } = useProtectedPage();
 
   const [selectedPost, setSelectedPost] = useState();
-  const { posts, fetchPosts, addPost } = useContext(PostsContext);
+  const { posts, fetchPosts, addPost, pagination } = useContext(PostsContext);
   const [fields, setFields, clear] = useForm({
     title: "",
     body: "",
@@ -42,12 +42,15 @@ function Feed() {
   const renderPosts = () => {
     return posts.map((post) => (
       <CardPost
+        key={post.id}
+        id={post.id}
         onClick={() => setSelectedPost(post.id)}
         title={post.title}
         username={post.username}
         body={post.body}
         comments={post.commentCount}
         createdAt={post.createdAt}
+        userVote={post.userVote}
       />
     ));
   };
@@ -83,7 +86,15 @@ function Feed() {
           </ButtonContainer>
         </WriteCommentContainer>
 
-        <Posts>{renderPosts()}</Posts>
+        <Posts
+          next={() => fetchPosts(pagination.page)}
+          loader={<h4>Carregando...</h4>}
+          hasMore={!!pagination.hasMore}
+          dataLength={posts.length}
+          endMessage={null}
+        >
+          {renderPosts()}
+        </Posts>
       </Container>
     </>
   );

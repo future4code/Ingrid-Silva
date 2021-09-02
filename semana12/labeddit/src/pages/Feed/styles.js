@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import InfiniteScroll from "react-infinite-scroll-component";
 import { Container as PostContainer } from "../Post/styles";
 
 export const Container = styled(PostContainer)`
@@ -6,7 +7,7 @@ export const Container = styled(PostContainer)`
   margin-top: 78px;
 `;
 
-export const Posts = styled.div`
+export const Posts = styled(InfiniteScroll)`
   margin-top: 15px;
 `;
 

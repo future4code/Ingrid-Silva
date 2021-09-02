@@ -14,7 +14,7 @@ import {
   Message,
 } from "./styles";
 import { login } from "../../services/auth";
-import { useHistory } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Login() {
   useUnprotectedPage();
@@ -80,7 +80,7 @@ function Login() {
         </InputContainer>
 
         <Message>
-          Primeira vez no LabEddit? <a href="/register">CADASTRAR-SE</a>
+          Primeira vez no LabEddit? <Link to="/register">CADASTRAR-SE</Link>
         </Message>
       </LeftSide>
     </Container>
