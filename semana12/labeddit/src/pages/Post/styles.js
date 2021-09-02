@@ -9,10 +9,10 @@ export const Container = styled.main`
   max-width: 600px;
 `;
 export const CommentsContainer = styled.div``;
-export const WriteCommentContainer = styled.div`
+export const WriteCommentContainer = styled.form`
   display: flex;
   flex-direction: column;
-  padding: 10px 20px;
+  padding: 20px 30px;
   width: 100%;
   background-color: #fff;
   border-radius: 4px;
@@ -28,7 +28,6 @@ export const Write = styled.textarea`
 export const ButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  padding: 10px 0;
 `;
 export const Button = styled.button`
   background-color: #8d8d8d;
@@ -40,6 +39,7 @@ export const Button = styled.button`
   font-weight: 700;
   color: #fff;
   cursor: pointer;
+  margin-top: 10px;
 
   &:hover {
     background-color: rgba(125, 124, 124, 0.96);

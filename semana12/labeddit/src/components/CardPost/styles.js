@@ -9,10 +9,14 @@ export const Container = styled.section`
   background-color: #fff;
   border: 1px solid #fff;
   border-radius: 4px;
-  padding: 30px;
+  padding: 15px;
   margin-bottom: 15px;
   display: flex;
   transition: border-color 100ms ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 
   ${({ onClick }) =>
     !!onClick &&
@@ -23,9 +27,17 @@ export const Container = styled.section`
       }
     `}
 `;
-export const Title = styled.h3`
-  margin-bottom: 15px;
+
+export const Username = styled.p`
+  font-size: 12px;
+  margin-bottom: 5px;
+  color: #8d8e94;
 `;
+
+export const Title = styled.h3`
+  margin-bottom: 10px;
+`;
+
 export const PostContent = styled.p``;
 
 export const CommentsContainer = styled.div`
@@ -47,6 +59,9 @@ export const Comments = styled.p`
 export const MainContent = styled.div``;
 export const IconsContainer = styled.div`
   margin-right: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 
   button {
     background-color: transparent;
@@ -67,9 +82,4 @@ export const Down = styled(AiFillDownCircle)`
   &:hover {
     color: #7193ff;
   }
-`;
-
-export const Username = styled.p`
-  font-size: 14px;
-  margin-bottom: 10px;
 `;

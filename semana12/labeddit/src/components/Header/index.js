@@ -16,7 +16,7 @@ import {
   RedditWebLogo,
 } from "./styles";
 
-function Header() {
+function Header({ onLogout }) {
   return (
     <Container>
       <RedditWebLogo src={Logo} />
@@ -29,7 +29,7 @@ function Header() {
       </InputContainer>
 
       <Menu>
-        <Button variant="outlined" as={Link} to="/">
+        <Button variant="outlined" onClick={onLogout}>
           Sair
         </Button>
 

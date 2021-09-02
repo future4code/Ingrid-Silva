@@ -1,13 +1,20 @@
 import styled from "styled-components";
+import { Container as PostContainer } from "../Post/styles";
 
-export const Container = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  width: 100%;
-  max-width: 600px;
-  margin: 0px auto;
+export const Container = styled(PostContainer)`
+  margin-bottom: 30px;
+  margin-top: 78px;
 `;
+
 export const Posts = styled.div`
   margin-top: 15px;
+`;
+
+export const PostTitle = styled.input`
+  border: 1px solid #dae0e6;
+  border-radius: 4px;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  padding: 8px 16px;
+  margin-bottom: 10px;
 `;

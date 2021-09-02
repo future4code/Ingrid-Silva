@@ -1,5 +1,7 @@
 import React from "react";
-
+import dayjs from "dayjs";
+import relativeTimePlugin from "dayjs/plugin/relativeTime";
+import "dayjs/locale/pt-br";
 import {
   Container,
   Title,
@@ -14,12 +16,16 @@ import {
   Username,
 } from "./styles";
 
+dayjs.extend(relativeTimePlugin);
+dayjs.locale("pt-br");
+
 function CardPost({
   title,
   username,
   body,
   comments,
   onClick,
+  createdAt,
   showComments = true,
 }) {
   return (
@@ -33,8 +39,10 @@ function CardPost({
         </button>
       </IconsContainer>
       <MainContent>
+        <Username>
+          Postado por {username} {dayjs(createdAt).fromNow()}
+        </Username>
         <Title>{title}</Title>
-        <Username>{username}</Username>
         <PostContent>{body}</PostContent>
         {showComments && (
           <CommentsContainer>

@@ -17,15 +17,27 @@ export const useForm = (initialState) => {
 };
 
 export const useProtectedPage = () => {
+  const [isLogged, setIsLogged] = useState(false);
   const history = useHistory();
 
   useLayoutEffect(() => {
+    if (isLogged) return;
+
     const token = localStorage.getItem("token");
 
-    if (!token) {
+    if (token === null) {
       history.push("/");
+    } else {
+      setIsLogged(true);
     }
-  }, [history]);
+  }, [history, isLogged]);
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setIsLogged(false);
+  };
+
+  return { isLogged, logout };
 };
 
 export const useUnprotectedPage = () => {
