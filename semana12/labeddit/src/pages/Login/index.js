@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginButton from "../../components/LoginButton";
 import { useForm, useUnprotectedPage } from "../../utils/hooks";
 
@@ -15,6 +15,7 @@ import {
 } from "./styles";
 import { login } from "../../services/auth";
 import { Link, useHistory } from "react-router-dom";
+import Loader from "../../components/Loader";
 
 function Login() {
   useUnprotectedPage();
@@ -23,6 +24,7 @@ function Login() {
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const goToFeed = () => {
     history.push("/feed");
@@ -37,13 +39,15 @@ function Login() {
     };
 
     try {
+      setIsLoading(true);
       const { data } = await login(body);
       localStorage.setItem("token", data.token);
       goToFeed();
       clear();
     } catch (e) {
       console.log("Não deu certo", { ...e });
-      alert("Erro no login");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -75,7 +79,9 @@ function Login() {
             onChange={setFields}
             required
           />
-          <LoginButton type="submit">Entrar</LoginButton>
+          <LoginButton type="submit">
+            {isLoading ? <Loader /> : "Entrar"}
+          </LoginButton>
         </InputContainer>
 
         <Message>

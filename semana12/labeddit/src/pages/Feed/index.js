@@ -14,7 +14,7 @@ import {
 import { Container, Posts, PostTitle } from "./styles";
 
 function Feed() {
-  const { logout } = useProtectedPage();
+  const { logout, isLogged } = useProtectedPage();
 
   const [selectedPost, setSelectedPost] = useState();
   const { filteredPosts, fetchPosts, addPost, pagination } =
@@ -25,8 +25,10 @@ function Feed() {
   });
 
   useEffect(() => {
-    fetchPosts();
-  }, [fetchPosts]);
+    if (isLogged) {
+      fetchPosts();
+    }
+  }, [fetchPosts, isLogged]);
 
   const handleCreatePost = async (event) => {
     event.preventDefault();

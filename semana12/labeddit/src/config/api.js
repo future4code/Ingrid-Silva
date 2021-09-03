@@ -8,14 +8,28 @@ const instance = axios.create({
   },
 });
 
-instance.interceptors.request.use((res) => {
+instance.interceptors.request.use((req) => {
   const token = localStorage.getItem("token");
 
   if (token) {
-    res.headers["Authorization"] = token;
+    req.headers["Authorization"] = token;
   }
 
-  return res;
+  return req;
 });
+
+instance.interceptors.response.use(
+  (res) => res,
+  (error) => {
+    console.log({ ...error });
+
+    if (error.response.status === 401) {
+      localStorage.removeItem("token");
+      window.location.replace("/");
+    }
+
+    return Promise.reject(error);
+  }
+);
 
 export default instance;

@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import LoginButton from "../../components/LoginButton";
 import { useForm, useUnprotectedPage } from "../../utils/hooks";
 import { register } from "../../services/auth";
+import Loader from "../../components/Loader";
 
 import {
   Container,
@@ -14,15 +15,21 @@ import {
   RightSide,
   Title,
 } from "../Login/styles";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 
 function Register() {
   useUnprotectedPage();
+  const history = useHistory();
   const [fields, setFields, clear] = useForm({
     username: "",
     email: "",
     password: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
+
+  const goToFeed = () => {
+    history.push("/feed");
+  };
 
   const handleRegister = async (event) => {
     event.preventDefault();
@@ -34,10 +41,15 @@ function Register() {
     };
 
     try {
+      setIsLoading(true);
       const { data } = await register(body);
+      localStorage.setItem("token", data.token);
+      goToFeed();
       clear();
     } catch (e) {
       console.log("Não deu certo", { ...e });
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -77,7 +89,9 @@ function Register() {
             required
           />
 
-          <LoginButton>Cadastrar</LoginButton>
+          <LoginButton type="submit">
+            {isLoading ? <Loader /> : "Cadastrar"}
+          </LoginButton>
         </InputContainer>
 
         <Message>

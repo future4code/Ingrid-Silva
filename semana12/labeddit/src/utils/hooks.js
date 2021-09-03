@@ -1,5 +1,6 @@
-import { useLayoutEffect, useState } from "react";
+import { useLayoutEffect, useState, useCallback } from "react";
 import { useHistory } from "react-router-dom";
+import jwtDecode from "jwt-decode";
 
 export const useForm = (initialState) => {
   const [fields, setFields] = useState(initialState);
@@ -20,22 +21,29 @@ export const useProtectedPage = () => {
   const [isLogged, setIsLogged] = useState(false);
   const history = useHistory();
 
+  const logout = useCallback(() => {
+    localStorage.removeItem("token");
+    setIsLogged(false);
+
+    history.push("/");
+  }, [history]);
+
   useLayoutEffect(() => {
     if (isLogged) return;
 
     const token = localStorage.getItem("token");
 
-    if (token === null) {
-      history.push("/");
-    } else {
-      setIsLogged(true);
-    }
-  }, [history, isLogged]);
+    try {
+      const jwt = jwtDecode(token);
+      const isTokenExpired = Date.now() >= jwt.exp * 1000;
 
-  const logout = () => {
-    localStorage.removeItem("token");
-    setIsLogged(false);
-  };
+      if (isTokenExpired) throw new Error("Token expired");
+
+      setIsLogged(true);
+    } catch (e) {
+      logout();
+    }
+  }, [isLogged, logout]);
 
   return { isLogged, logout };
 };
