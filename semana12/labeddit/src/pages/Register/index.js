@@ -89,7 +89,7 @@ function Register() {
             required
           />
 
-          <LoginButton type="submit">
+          <LoginButton type="submit" disabled={isLoading}>
             {isLoading ? <Loader /> : "Cadastrar"}
           </LoginButton>
         </InputContainer>

@@ -79,7 +79,7 @@ function Login() {
             onChange={setFields}
             required
           />
-          <LoginButton type="submit">
+          <LoginButton type="submit" disabled={isLoading}>
             {isLoading ? <Loader /> : "Entrar"}
           </LoginButton>
         </InputContainer>
