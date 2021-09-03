@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Logo from "../../assets/logo-reddit.svg";
+import PostsContext from "../../store/posts-context";
 import Button from "../Button";
 import DropdownMenu from "../DropdownMenu";
 
@@ -14,10 +15,17 @@ import {
   ArrowDown,
   User,
   RedditWebLogo,
+  DropdownContainer,
+  DropdownButton,
 } from "./styles";
 
 function Header({ onLogout }) {
   const [showDropdownMenu, setShowDropdownMenu] = useState(false);
+  const { filter, setFilter } = useContext(PostsContext);
+
+  const handleInputSearch = (e) => {
+    setFilter(e.target.value);
+  };
 
   const handleShowDropdownMenu = () => {
     setShowDropdownMenu((prev) => !prev);
@@ -31,7 +39,12 @@ function Header({ onLogout }) {
         <SearchIconContainer>
           <SearchIcon />
         </SearchIconContainer>
-        <Input type="search" placeholder="Buscar no LabEddit" />
+        <Input
+          value={filter}
+          type="search"
+          onChange={handleInputSearch}
+          placeholder="Buscar no LabEddit"
+        />
       </InputContainer>
 
       <Menu>
@@ -39,14 +52,14 @@ function Header({ onLogout }) {
           Sair
         </Button>
 
-        <div style={{ position: "relative" }}>
-          <button onClick={handleShowDropdownMenu}>
+        <DropdownContainer style={{ position: "relative" }}>
+          <DropdownButton onClick={handleShowDropdownMenu}>
             <User />
             <ArrowDown />
-          </button>
+          </DropdownButton>
 
           {showDropdownMenu && <DropdownMenu />}
-        </div>
+        </DropdownContainer>
       </Menu>
     </Container>
   );

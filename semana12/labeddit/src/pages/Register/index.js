@@ -35,7 +35,6 @@ function Register() {
 
     try {
       const { data } = await register(body);
-      console.log("Deu certo", data);
       clear();
     } catch (e) {
       console.log("Não deu certo", { ...e });

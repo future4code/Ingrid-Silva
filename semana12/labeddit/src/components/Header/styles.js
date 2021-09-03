@@ -105,3 +105,15 @@ export const ArrowDown = styled(AiOutlineDown)`
 export const Buttonlink = styled(Button)`
   text-decoration: none;
 `;
+
+export const DropdownContainer = styled.div`
+  flex-shrink: 0;
+  @media (min-width: 617px) {
+    display: none;
+  }
+`;
+export const DropdownButton = styled.button`
+  background-color: transparent;
+  border: none;
+  width: 100%;
+`;

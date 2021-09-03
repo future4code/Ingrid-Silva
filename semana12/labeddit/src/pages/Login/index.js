@@ -40,7 +40,6 @@ function Login() {
       const { data } = await login(body);
       localStorage.setItem("token", data.token);
       goToFeed();
-      console.log("Deu certo", data);
       clear();
     } catch (e) {
       console.log("Não deu certo", { ...e });

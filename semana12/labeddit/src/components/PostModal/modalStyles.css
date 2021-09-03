@@ -2,6 +2,7 @@
   background-color: rgba(28, 28, 28, 0.9) !important;
   opacity: 0;
   transition: opacity 200ms ease-in-out;
+  padding: 20px;
 }
 
 .ReactModal__Overlay--after-open {

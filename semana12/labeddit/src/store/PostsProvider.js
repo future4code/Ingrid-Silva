@@ -3,6 +3,7 @@ import { createPost, getPosts } from "../services/posts";
 import PostsContext from "./posts-context";
 
 const PostsProvider = (props) => {
+  const [filter, setFilter] = useState("");
   const [posts, setPosts] = useState([]);
   const [pagination, setPagination] = useState({
     page: 1,
@@ -10,10 +11,25 @@ const PostsProvider = (props) => {
     hasMore: true,
   });
 
+  const containsString = (string) => {
+    return string.toLowerCase().includes(filter.toLowerCase());
+  };
+
+  const filteredPosts =
+    filter.length === 0
+      ? posts
+      : posts.filter((post) => {
+          if (containsString(post.title) || containsString(post.body)) {
+            return true;
+          }
+
+          return false;
+        });
+
   const fetchPosts = useCallback(async (page = 1, size = 15) => {
     try {
       const { data } = await getPosts(page, size);
-      setPosts((posts) => [...posts, ...data]);
+      setPosts((posts) => (page === 1 ? data : [...posts, ...data]));
       setPagination((pagination) => ({
         ...pagination,
         page: pagination.page + 1,
@@ -58,6 +74,9 @@ const PostsProvider = (props) => {
     changePostVote,
     fetchPosts,
     pagination,
+    filter,
+    setFilter,
+    filteredPosts,
   };
 
   return (

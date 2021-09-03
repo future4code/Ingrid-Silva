@@ -29,7 +29,6 @@ function Post({ id, showComments }) {
     try {
       const { data } = await getComments(id);
       setComments(data);
-      console.log({ data });
     } catch (e) {
       console.log({ ...e });
     }
@@ -61,8 +60,6 @@ function Post({ id, showComments }) {
 
   const changeCommentVote = useCallback(
     (id, userVote) => {
-      console.log({ comments });
-
       const updatedComments = comments.map((comment) =>
         comment.id === id
           ? {
