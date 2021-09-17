@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import ReactCardFlip from "react-card-flip";
 import { ICard } from "../../config/interfaces";
 import GlobalContext from "../../global/GlobalContext";
 
@@ -14,18 +15,20 @@ const Card: React.FC<ICardItem> = ({ card, onClick }) => {
     state: { data },
   }: any = useContext(GlobalContext);
 
-  const getImageSource = () => {
-    if (!show) return data.imageBackCard;
-
-    return `${data.imagesUrl}${image}`;
-  };
-
   return (
-    <img
-      alt={name}
-      src={getImageSource()}
-      onClick={() => onClick && onClick(name)}
-    />
+    <ReactCardFlip isFlipped={!show} flipDirection="horizontal">
+      <img
+        alt={name}
+        src={`${data.imagesUrl}${image}`}
+        onClick={() => onClick && onClick(name)}
+      />
+
+      <img
+        alt={name}
+        src={data.imageBackCard}
+        onClick={() => onClick && onClick(name)}
+      />
+    </ReactCardFlip>
   );
 };
 

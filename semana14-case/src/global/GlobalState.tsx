@@ -13,6 +13,7 @@ const GlobalState: React.FC = ({ children }) => {
   const [isPlaying, setIsPlaying] = useState(false);
   const [selectedCard, setSelectedCard] = useState<string | undefined>();
   const [showModal, setShowModal] = useState(false);
+  const [isShuffling, setIsShuffling] = useState(false);
 
   const getData = useCallback(async () => {
     try {
@@ -26,14 +27,16 @@ const GlobalState: React.FC = ({ children }) => {
     }
   }, []);
 
-  const shuffleCards = () => {
-    const cards: ICard[] = shuffleArray([...data.cards]);
-    setData((data: IData) => ({ ...data, cards }));
+  const shuffleCards = (cards: ICard[]) => {
+    const shuffledCards: ICard[] = shuffleArray(cards);
+    setData((data: IData) => ({ ...data, cards: shuffledCards }));
   };
 
   const toggleCards = (show: boolean) => {
     const cards: ICard[] = data.cards.map((card: ICard) => ({ ...card, show }));
     setData((data: IData) => ({ ...data, cards }));
+
+    return cards;
   };
 
   const selectCard = (name: string) => {
@@ -51,14 +54,33 @@ const GlobalState: React.FC = ({ children }) => {
   };
 
   const startGame = () => {
-    shuffleCards();
-    toggleCards(false);
+    setIsShuffling(true);
     setIsPlaying(true);
     setSelectedCard(undefined);
+
+    const updatedCards = toggleCards(false);
+
+    setTimeout(() => {
+      shuffleCards(updatedCards);
+      setIsShuffling(false);
+    }, 1000);
   };
 
-  const state = { data, isPlaying, selectedCard, showModal };
-  const setters = { startGame, selectCard, setShowModal, closeModal };
+  const state = {
+    data,
+    isPlaying,
+    selectedCard,
+    showModal,
+    isShuffling,
+  };
+  const setters = {
+    startGame,
+    selectCard,
+    setShowModal,
+    closeModal,
+    shuffleCards,
+    setIsShuffling,
+  };
   const requests = { getData };
 
   return (

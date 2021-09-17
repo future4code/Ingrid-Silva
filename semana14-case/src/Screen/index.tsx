@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import CardList from "../components/CardList";
 import Modal from "../components/Modal";
 import { ICard } from "../config/interfaces";
 import GlobalContext from "../global/GlobalContext";
-import { Container, PlayButton } from "./styles";
+import { Container, PlayButton, Message } from "./styles";
 
 const Screen: React.FC = () => {
   const {
-    state: { data, isPlaying, selectedCard, showModal },
-    setters: { startGame, selectCard, setShowModal },
+    state: { data, isPlaying, selectedCard, showModal, isShuffling },
+    setters: { startGame, selectCard, setShowModal, setIsShuffling },
     requests: { getData },
   }: any = useContext(GlobalContext);
 
@@ -31,15 +31,19 @@ const Screen: React.FC = () => {
       return renderActionButton("Jogar novamente");
     }
 
+    if (isShuffling) {
+      return <Message>Embaralhando cartas...</Message>;
+    }
+
     if (isPlaying) {
-      return <p>Escolha uma carta</p>;
+      return <Message>Escolha uma carta</Message>;
     }
 
     return renderActionButton("Jogar");
   };
 
   const handleCardClick = (name: string) => {
-    if (!selectedCard || selectedCard === name) {
+    if (!isShuffling && (!selectedCard || selectedCard === name)) {
       selectCard(name);
       setShowModal(true);
     }
