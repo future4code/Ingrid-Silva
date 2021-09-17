@@ -1,18 +1,19 @@
 import { ICard } from "../../config/interfaces";
 import Card from "../Card";
-import { Container } from "./styles";
+import { List } from "./styles";
 
 interface ICardList {
   cards: ICard[];
+  onClick: (name: string) => void;
 }
 
-const CardList: React.FC<ICardList> = ({ cards }) => {
+const CardList: React.FC<ICardList> = ({ cards, onClick }) => {
   return (
-    <Container>
+    <List>
       {cards?.map((card: ICard) => (
-        <Card key={card.name} card={card} />
+        <Card key={card.name} card={card} onClick={onClick} />
       ))}
-    </Container>
+    </List>
   );
 };
 export default CardList;

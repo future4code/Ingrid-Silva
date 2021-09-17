@@ -1,7 +1,17 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+export const List = styled.div`
+  align-items: center;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(162px, 1fr));
   gap: 20px;
+  width: 100%;
+
+  flex-direction: column;
+  grid-template-columns: repeat(auto-fill, minmax(162px, 1fr));
+
+  img {
+    display: block;
+    height: auto;
+    width: 100%;
+  }
 `;

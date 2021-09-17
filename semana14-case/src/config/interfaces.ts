@@ -1,6 +1,7 @@
 export interface ICard {
   name: string;
   image: string;
+  show: boolean;
 }
 
 export interface IData {
