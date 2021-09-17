@@ -1,27 +1,21 @@
-import { useContext } from "react";
 import { ICard } from "../../config/interfaces";
-import GlobalContext from "../../global/GlobalContext";
 import Card from "../Card";
 import { Content, Text, Overlay, Name, CloseButton } from "./styles";
 
 interface IModal {
   card: ICard;
+  onClose: () => void;
 }
 
-const Modal: React.FC<IModal> = ({ card }) => {
-  const {
-    state: { selectedCard },
-    setters: { closeModal },
-  }: any = useContext(GlobalContext);
-
+const Modal: React.FC<IModal> = ({ card, onClose }) => {
   const handleContentClick = (e: any) => {
     e.stopPropagation();
   };
 
   return (
-    <Overlay onClick={closeModal}>
+    <Overlay onClick={onClose} data-cy="modal-overlay">
       <Content onClick={handleContentClick}>
-        <Name>{selectedCard}</Name>
+        <Name>{card.name}</Name>
         <Card card={card} />
         <Text>
           The standard chunk of Lorem Ipsum used since the 1500s is reproduced
@@ -29,7 +23,7 @@ const Modal: React.FC<IModal> = ({ card }) => {
           Finibus Bonorum et Malorum" by Cicero.
         </Text>
 
-        <CloseButton onClick={closeModal}>&times;</CloseButton>
+        <CloseButton onClick={onClose}>&times;</CloseButton>
       </Content>
     </Overlay>
   );
