@@ -64,9 +64,40 @@ app.get("/countries/:id", (req: Request, res: Response) => {
   }
 });
 
-app.post("/countries/:id", (req: Request, res: Response) => {
+app.put("/countries/:id", (req: Request, res: Response) => {
   try {
-  } catch (error: any) {}
+    const { id } = req.params;
+    const updatedName: string = req.body.name;
+    const updatedCapital: string = req.body.capital;
+
+    if (isNaN(Number(req.params.id))) {
+      throw new Error("Invalid id");
+    }
+
+    if (!updatedName || !updatedCapital) {
+      res.statusCode = 404;
+      throw new Error("Invalid body information");
+    }
+
+    const result: country | undefined = countries.find(
+      (country) => country.id === Number(id)
+    );
+
+    if (!result) {
+      throw new Error("Country not found");
+    }
+
+    if (updatedName === result.name && updatedCapital === result.capital) {
+      res.statusCode = 400;
+      throw new Error("Already changed");
+    }
+
+    countries[Number(id)].name = updatedName;
+
+    res.send("Country updated successfully");
+  } catch (error: any) {
+    throw new Error("Country not uptaded, try again!");
+  }
 });
 
 const server = app.listen(process.env.PORT || 3003, () => {
